@@ -10,13 +10,23 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'flazz/vim-colorschemes'
 
+"Themes
+Plugin 'flazz/vim-colorschemes'
+Plugin 'altercation/vim-colors-solarized'
+
+"Git
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
-Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdcommenter'
+"Languages
+Plugin 'sheerun/vim-polyglot'
+
+"Code
+Plugin 'w0rp/ale'
+Plugin 'tpope/vim-commentary'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'bronson/vim-trailing-whitespace'
 
 Plugin 'vim-airline/vim-airline'
 
@@ -41,6 +51,7 @@ filetype plugin indent on    " required
 "General
 syntax on
 set number
+set wildmenu
 set cc=80
 
 "Indentation
@@ -52,4 +63,7 @@ set tabstop=4
 set expandtab
 
 ""Theme
-"colorscheme molokai
+set background=dark
+colorscheme molokai
+" let g:solarized_termcolors=256 
+" colorscheme solarized
