@@ -20,6 +20,8 @@ if ! zgen saved; then
   # specify plugins here
   zgen oh-my-zsh
 
+  zgen oh-my-zsh plugins/sudo
+
   zgen load caiogondim/bullet-train-oh-my-zsh-theme bullet-train
 
   # generate the init script from plugins above
@@ -28,6 +30,12 @@ fi
 
 # Theme
 ZSH_THEME="bullet-train"
+BULLETTRAIN_PROMPT_ORDER=(
+    time
+    context
+    dir
+    git
+)
 
 # Autostart
 neofetch
