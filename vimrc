@@ -54,7 +54,6 @@ syntax on
 set number
 set wildmenu
 set cc=80
-
 "Indentation
 set autoindent
 set smartindent
@@ -64,7 +63,5 @@ set tabstop=4
 set expandtab
 
 ""Theme
-set background=dark
 colorscheme molokai
-" let g:solarized_termcolors=256 
-" colorscheme solarized
+set t_ut=
