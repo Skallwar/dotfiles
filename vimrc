@@ -25,8 +25,10 @@ Plugin 'sheerun/vim-polyglot'
 
 "Code
 Plugin 'w0rp/ale'
+Plugin 'vhdirk/vim-cmake'
 Plugin 'tpope/vim-commentary'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'luochen1990/rainbow'
 Plugin 'bronson/vim-trailing-whitespace'
 
 Plugin 'vim-airline/vim-airline'
@@ -62,6 +64,11 @@ set shiftwidth=4
 set tabstop=4
 set expandtab
 
+""Plugin config
+"Ale
+let g:ale_lint_on_text_changed = 'never'
+
 ""Theme
 colorscheme molokai
 set t_ut=
+let g:rainbow_active = 1
