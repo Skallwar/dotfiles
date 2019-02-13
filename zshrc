@@ -41,6 +41,13 @@ BULLETTRAIN_PROMPT_ORDER=(
 # Autostart
 neofetch
 
+# Alias
+alias zshrc="vim ~/.zshrc"
+alias vimrc="vim ~/.vimrc"
+alias untar='tar -zxvf '
+alias yay -R= "yay -Rcsn"
+alias i3lock="i3lock -i $(find ~/dotfiles/IMG/DESKTOP/ -name "*png" | shuf -n1)"
+
 # Man colors
 export LESS_TERMCAP_mb=$'\e[1;32m'
 export LESS_TERMCAP_md=$'\e[1;32m'
