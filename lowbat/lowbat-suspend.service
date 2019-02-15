@@ -1,0 +1,7 @@
+[Unit]
+Description=Suspend on low battery
+
+[Service]
+Type=oneshot
+ExecStart=/home/esteban/dotfiles/lowbat/lowbat-suspend.sh
+User=nobody
