@@ -14,7 +14,6 @@ Plugin 'VundleVim/Vundle.vim'
 "Themes
 Plugin 'powerline/powerline-fonts'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'altercation/vim-colors-solarized'
 
 "Git
 Plugin 'tpope/vim-fugitive'
@@ -26,8 +25,10 @@ Plugin 'sheerun/vim-polyglot'
 "Code
 Plugin 'w0rp/ale'
 Plugin 'vhdirk/vim-cmake'
-Plugin 'tpope/vim-commentary'
-Plugin 'jiangmiao/auto-pairs'
+Plugin 'rust-lang/rust.vim'
+Plugin 'timonv/vim-cargo'
+Plugin 'tomtom/tcomment_vim'
+" Plugin 'jiangmiao/auto-pairs'
 Plugin 'luochen1990/rainbow'
 Plugin 'bronson/vim-trailing-whitespace'
 
@@ -67,6 +68,14 @@ set expandtab
 ""Plugin config
 "Ale
 let g:ale_lint_on_text_changed = 'never'
+" let g:ale_completion_enabled = 1
+let ale_linters = {
+            \'rust' : ['cargo', 'rls', 'rustc']
+            \}
+
+"Rust
+let g:rustfmt_autosave = 1
+let g:ale_rust_rls_toolchain = 'stable'
 
 ""Theme
 colorscheme molokai
