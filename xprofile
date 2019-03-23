@@ -4,5 +4,8 @@
 # Wicd
 wicd-gtk -t &
 
+# Blueman
+blueman-applet &
+
 # Function keys
 xbindkeys &
