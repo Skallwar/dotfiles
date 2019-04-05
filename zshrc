@@ -39,6 +39,9 @@ BULLETTRAIN_PROMPT_ORDER=(
     git
 )
 
+# EnVar
+export EDITOR="/usr/bin/vim"
+
 # Autostart
 neofetch
 
@@ -48,7 +51,7 @@ alias vimrc="vim ~/.vimrc"
 alias untar='tar -zxvf '
 alias rm='echo "Use trahs instead !"'
 alias trash='trash-put'
-alias yay -R= "yay -Rcsn"
+alias listpkg='yay -Qet'
 alias i3lock="i3lock -i $(find ~/dotfiles/IMG/DESKTOP/ -name "*png" | shuf -n1)"
 
 # Man colors
