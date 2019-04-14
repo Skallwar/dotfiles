@@ -3,10 +3,9 @@ Description=User suspend actions
 Before=sleep.target
 
 [Service]
-User=esteban
-Type=forking
+User=%I
 Environment=DISPLAY=:0
-ExecStart=/home/esteban/dotfiles/i3/i3lock.sh
+ExecStart=/home/esteban/dotfiles/services/suspend.sh
 ExecStartPost=/usr/bin/sleep 1
 
 [Install]
