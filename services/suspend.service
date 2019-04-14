@@ -1,0 +1,13 @@
+[Unit]
+Description=User suspend actions
+Before=sleep.target
+
+[Service]
+User=esteban
+Type=forking
+Environment=DISPLAY=:0
+ExecStart=/home/esteban/dotfiles/i3/i3lock.sh
+ExecStartPost=/usr/bin/sleep 1
+
+[Install]
+WantedBy=sleep.target
