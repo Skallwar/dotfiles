@@ -4,4 +4,4 @@ Description=Suspend on low battery
 [Service]
 Type=oneshot
 ExecStart=/home/esteban/dotfiles/services/lowbat-suspend.sh
-User=nobody
+User=root

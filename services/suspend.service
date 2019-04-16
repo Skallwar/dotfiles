@@ -3,7 +3,8 @@ Description=User suspend actions
 Before=sleep.target
 
 [Service]
-User=%I
+User=esteban
+Type=forking
 Environment=DISPLAY=:0
 ExecStart=/home/esteban/dotfiles/services/suspend.sh
 ExecStartPost=/usr/bin/sleep 1
