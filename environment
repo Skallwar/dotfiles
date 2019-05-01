@@ -1,0 +1,8 @@
+#
+# This file is parsed by pam_env module
+#
+# Syntax: simple "KEY=VAL" pairs on separate lines
+#
+EDITOR=vim
+TERM=xterm-256color
+LIBVA_DRIVER_NAME=iHD
