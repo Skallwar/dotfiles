@@ -64,10 +64,6 @@ set shiftwidth=4
 set tabstop=4
 set expandtab
 
-""Plugin config
-"Ale
-let g:ale_lint_on_text_changed = 'never'
-
 "Rust
 let g:rustfmt_autosave = 1
 
