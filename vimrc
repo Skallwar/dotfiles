@@ -22,21 +22,13 @@ Plugin 'airblade/vim-gitgutter'
 "Languages
 Plugin 'sheerun/vim-polyglot'
 
-"C
-Plugin 'vhdirk/vim-cmake'
-
 "Rust
 Plugin 'rust-lang/rust.vim'
 
-"LaTex
-Plugin 'xuhdev/vim-latex-live-preview'
-
 "Code
-Plugin 'w0rp/ale'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'luochen1990/rainbow'
-Plugin 'bronson/vim-trailing-whitespace'
 
 "Tools
 Plugin 'vim-airline/vim-airline'
@@ -75,19 +67,9 @@ set expandtab
 ""Plugin config
 "Ale
 let g:ale_lint_on_text_changed = 'never'
-" let g:ale_completion_enabled = 1
-let g:ale_linters = {
-            \'c' : ['clangd'],
-            \'rust' : ['rls']
-            \}
 
 "Rust
 let g:rustfmt_autosave = 1
-let g:ale_rust_rls_toolchain = 'stable'
-
-"LaTex
-let g:livepreview_previewer = 'zathura'
-let g:livepreview_cursorhold_recompile = 0
 
 ""Theme
 colorscheme molokai
