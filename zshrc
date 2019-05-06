@@ -40,7 +40,7 @@ BULLETTRAIN_PROMPT_ORDER=(
 )
 
 # EnVar
-export EDITOR="/usr/bin/vim"
+# export WINIT_HIDPI_FACTOR=1
 
 # Autostart
 neofetch
