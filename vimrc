@@ -1,80 +1,53 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-""Vundle
-" set the runtime path to include Vundle and initialize
+"Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
 "Themes
-" Plugin 'powerline/powerline-fonts'
 Plugin 'flazz/vim-colorschemes'
 
 "Git
 Plugin 'tpope/vim-fugitive'
-" Plugin 'airblade/vim-gitgutter'
 
 "Languages server
-Plugin 'w0rp/ale'
+" Plugin 'prabirshrestha/async.vim'
+" Plugin 'prabirshrestha/vim-lsp'
 
 "Rust
-Plugin 'rust-lang/rust.vim'
+" Plugin 'rust-lang/rust.vim'
 
 "Code
 Plugin 'sheerun/vim-polyglot'
 Plugin 'tomtom/tcomment_vim'
-" Plugin 'jiangmiao/auto-pairs'
-" Plugin 'luochen1990/rainbow'
 
 "Tools
 Plugin 'vim-airline/vim-airline'
 
-
-" All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
 
 ""Set section
 "General
 syntax on
 set number
+set cursorline 
 set wildmenu
-" set showmatch
 set cc=80
+
 "Indentation
 set autoindent
 set smartindent
-set cindent
-set shiftwidth=4
 set tabstop=4
+set shiftwidth=4
 set expandtab
 
-"Ale
-let g:ale_linters = {'rust': ['rls']}
+"Theme
+set background=dark
+set t_ut=
 
+""Dev
 "Rust
 let g:rustfmt_autosave = 1
-let g:ale_rust_rls_toolchain = 'stable'
-
-""Theme
-set background=dark
-" colorscheme monokain
- set t_ut=
-" let g:rainbow_active = 1
