@@ -32,6 +32,7 @@ filetype plugin indent on    " required
 ""Set section
 "General
 syntax on
+set path=$PWD/**
 set number
 set cursorline 
 set wildmenu
