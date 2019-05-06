@@ -12,23 +12,24 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 "Themes
-Plugin 'powerline/powerline-fonts'
+" Plugin 'powerline/powerline-fonts'
 Plugin 'flazz/vim-colorschemes'
 
 "Git
 Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
+" Plugin 'airblade/vim-gitgutter'
 
-"Languages
-Plugin 'sheerun/vim-polyglot'
+"Languages server
+Plugin 'w0rp/ale'
 
 "Rust
 Plugin 'rust-lang/rust.vim'
 
 "Code
+Plugin 'sheerun/vim-polyglot'
 Plugin 'tomtom/tcomment_vim'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'luochen1990/rainbow'
+" Plugin 'jiangmiao/auto-pairs'
+" Plugin 'luochen1990/rainbow'
 
 "Tools
 Plugin 'vim-airline/vim-airline'
@@ -55,6 +56,7 @@ filetype plugin indent on    " required
 syntax on
 set number
 set wildmenu
+" set showmatch
 set cc=80
 "Indentation
 set autoindent
@@ -64,10 +66,15 @@ set shiftwidth=4
 set tabstop=4
 set expandtab
 
+"Ale
+let g:ale_linters = {'rust': ['rls']}
+
 "Rust
 let g:rustfmt_autosave = 1
+let g:ale_rust_rls_toolchain = 'stable'
 
 ""Theme
-colorscheme molokai
-set t_ut=
-let g:rainbow_active = 1
+set background=dark
+" colorscheme monokain
+ set t_ut=
+" let g:rainbow_active = 1
