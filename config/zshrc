@@ -49,6 +49,7 @@ alias untar='tar -zxvf '
 alias rm='echo "Use trahs instead !"'
 alias trash='trash-put'
 alias listpkg='yay -Qet'
+alias ssh-add-keys='ssh-add ~/.ssh/*id_rsa'
 alias i3lock="i3lock -i $(find ~/dotfiles/IMG/DESKTOP/ -name "*png" | shuf -n1)"
 
 # Man colors

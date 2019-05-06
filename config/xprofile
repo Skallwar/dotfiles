@@ -1,6 +1,7 @@
 # Polkit
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 eval `ssh-agent -s` &
+ssh-add ~/.ssh/xiaomi-air &
 
 # Conman
 connman-gtk --tray &
