@@ -2,8 +2,8 @@
 Description=1 minute timer for lowbat service
 
 [Timer]
-OnBootSec=2min
+OnBootSec=5min
 OnCalendar=*:*:0
 
 [Install]
-WantedBy=basic.target
+WantedBy=timer.target
