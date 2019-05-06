@@ -13,11 +13,11 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'tpope/vim-fugitive'
 
 "Languages server
-" Plugin 'prabirshrestha/async.vim'
-" Plugin 'prabirshrestha/vim-lsp'
+Plugin 'prabirshrestha/async.vim'
+Plugin 'prabirshrestha/vim-lsp'
 
 "Rust
-" Plugin 'rust-lang/rust.vim'
+Plugin 'rust-lang/rust.vim'
 
 "Code
 Plugin 'sheerun/vim-polyglot'
@@ -51,4 +51,12 @@ set t_ut=
 
 ""Dev
 "Rust
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
+        \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
+        \ 'whitelist': ['rust'],
+        \ })
+endif
 let g:rustfmt_autosave = 1
