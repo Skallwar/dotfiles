@@ -43,8 +43,8 @@ BULLETTRAIN_PROMPT_ORDER=(
 neofetch
 
 # Alias
-alias zshrc="vim ~/dotfiles/zshrc"
-alias vimrc="vim ~/dotfiles/vimrc"
+alias zshrc="vim ~/dotfiles/config/zshrc"
+alias vimrc="vim ~/dotfiles/config/vimrc"
 alias untar='tar -zxvf '
 alias rm='echo "Use trahs instead !"'
 alias trash='trash-put'

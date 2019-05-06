@@ -1,8 +1,0 @@
-# Polkit
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-
-# Function keys
-xbindkeys &
-
-# Windows manager
-exec i3
