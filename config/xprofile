@@ -1,3 +1,6 @@
+# Keyboard
+setxkbmap us -option compose:ralt
+
 # Polkit
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 eval `ssh-agent -s` &
