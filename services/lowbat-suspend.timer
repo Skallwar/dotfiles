@@ -1,9 +1,11 @@
 [Unit]
 Description=1 minute timer for lowbat service
+Requires=lowbat-suspend.service
 
 [Timer]
-OnBootSec=5min
-OnCalendar=*:*:0
+OnBootSec=1 m
+OnUnitActiveSec=60
+AccuracySec=10
 
 [Install]
 WantedBy=timer.target
