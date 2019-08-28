@@ -3,5 +3,5 @@ Description=Suspend on low battery
 
 [Service]
 Type=oneshot
-ExecStart=/home/esteban/dotfiles/services/lowbat-suspend.sh
+ExecStart=/etc/systemd/system/lowbat-suspend.sh
 User=root

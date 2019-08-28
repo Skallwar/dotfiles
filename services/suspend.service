@@ -6,7 +6,7 @@ Before=sleep.target
 User=esteban
 Type=forking
 Environment=DISPLAY=:0
-ExecStart=/home/esteban/dotfiles/services/suspend.sh
+ExecStart=/etc/systemd/system/suspend.sh
 ExecStartPost=/usr/bin/sleep 1
 
 [Install]
