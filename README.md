@@ -1,5 +1,5 @@
 # dotfiles
 Config files and more
 
-##Install
-Just run './install.sh'
+## Install
+Just run `./install.sh`
