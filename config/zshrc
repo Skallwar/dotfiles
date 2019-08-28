@@ -11,20 +11,7 @@ compinit
 ## Zgen
 source "${HOME}/.zgen/zgen.zsh"
 # if the init script doesn't exist
-    if ! zgen saved; then
-
-  # specify plugins here
-  zgen oh-my-zsh
-
-  # Tools
-  zgen oh-my-zsh plugins/git
-  zgen oh-my-zsh plugins/sudo
-
-  # Dev
-  zgen oh-my-zsh plugins/cargo
-
-  # Theme
-  zgen load caiogondim/bullet-train-oh-my-zsh-theme bullet-train
+if ! zgen saved; then
 
   # generate the init script from plugins above
   zgen save
