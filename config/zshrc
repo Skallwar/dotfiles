@@ -47,7 +47,6 @@ alias zshrc="vim ~/dotfiles/config/zshrc"
 alias vimrc="vim ~/dotfiles/config/vimrc"
 alias untar='tar -xvf '
 alias untargz='tar -zxvf '
-alias rm='echo "Use trahs instead !"'
 alias trash='trash-put'
 alias listpkg='yay -Qet'
 alias ssh-add-keys='ssh-add ~/.ssh/*id_rsa'
