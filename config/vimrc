@@ -13,7 +13,7 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'tpope/vim-fugitive'
 
 "Languages server
-" Plugin 'w0rp/ale'
+Plugin 'w0rp/ale'
 
 "Rust
 Plugin 'rust-lang/rust.vim'
@@ -28,7 +28,6 @@ Plugin 'vim-airline/vim-airline'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-""Set section
 "General
 syntax on
 set path=$PWD/**
@@ -48,6 +47,16 @@ set expandtab
 set background=dark
 set t_ut=
 
+"Plugin
+let g:ale_linters_explicit = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_linters = {}
+
 ""Dev
+"C
+let g:ale_linters.c = ['clangd']
+
 "Rust
+let g:ale_linters.rust = ['rls']
 let g:rustfmt_autosave = 1
