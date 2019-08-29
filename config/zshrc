@@ -17,17 +17,7 @@ if ! zgen saved; then
   zgen save
 fi
 
-# Theme
-ZSH_THEME="bullet-train"
-BULLETTRAIN_PROMPT_ORDER=(
-    time
-    context
-    dir
-    git
-)
-
 # Autostart
-neofetch
 
 # Alias
 alias zshrc="vim $(readlink ~/.zshrc)"
