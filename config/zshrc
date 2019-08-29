@@ -1,34 +1,12 @@
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-setopt appendhistory extendedglob
+export PS1="[%n@%M %~]$ "
 
-zstyle :compinstall filename '/home/esteban/.zshrc'
+#Completion
+zstyle ':completion:*' menu select
+zstyle ':completion:*' completer _complete
+autoload -U compinit && compinit
 
-autoload -Uz compinit
-compinit
-
-## Zgen
-source "${HOME}/.zgen/zgen.zsh"
-# if the init script doesn't exist
-if ! zgen saved; then
-
-  # generate the init script from plugins above
-  zgen save
-fi
-
-# Autostart
-
-# Alias
-alias zshrc="vim $(readlink ~/.zshrc)"
-alias vimrc="vim $(readlink ~/.vimrc)"
-alias untar='tar -xvf '
-alias untargz='tar -zxvf '
-alias trash='trash-put'
-alias listpkg='yay -Qet'
-alias ssh-add-keys='ssh-add ~/.ssh/*id_rsa'
-alias i3lock="i3lock -i $(find ~/dotfiles/IMG/DESKTOP/ -name "*png" | shuf -n1)"
-
+#Colors
+autoload -U colors && colors 
 # Man colors
 export LESS_TERMCAP_mb=$'\e[1;32m'
 export LESS_TERMCAP_md=$'\e[1;32m'
@@ -37,3 +15,18 @@ export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
+
+#Export
+export EDITOR="vim"
+
+# Alias
+alias zshrc="vim $(readlink ~/.zshrc)"
+alias vimrc="vim $(readlink ~/.vimrc)"
+alias ls="ls --color=auto"
+alias tree="tree -C"
+alias rm="echo Use trash"
+alias lock="~/.dotfiles/lock.sh"
+# alias untar="tar -xvf "
+# alias untargz="tar -zxvf "
+# alias listpkg='yay -Qet'
+# alias ssh-add-keys='ssh-add ~/.ssh/*id_rsa'
