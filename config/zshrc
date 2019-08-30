@@ -19,6 +19,9 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 #Export
 export EDITOR="vim"
 
+#Don't use vim keybing
+bindkey -e
+
 # Alias
 alias zshrc="vim $(readlink ~/.zshrc)"
 alias vimrc="vim $(readlink ~/.vimrc)"
