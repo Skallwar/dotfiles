@@ -1,4 +1,5 @@
 /* See LICENSE file for copyright and license details. */
+#include "fibonacci.c"
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -43,8 +44,10 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
+ 	{ "[@]",      spiral },  /* Fibo */
+ 	{ "[\\]",     dwindle }, /* Fibo */
+	{ "[M]",      monocle }, /* Full screen */
+	// { "><>",      NULL },    /* no layout function means floating behavior */
 	{ NULL,       NULL },
 };
 
