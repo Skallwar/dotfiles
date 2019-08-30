@@ -23,15 +23,15 @@ read needServices
 if [ "$needServices" = "y" -o "$needServices" = "Y" ]
 then
     #Lowbat-suspend
-    sudo ln -sfv $path_origin/services/lowbat-suspend.timer /etc/systemd/system &&
-    sudo ln -sfv $path_origin/services/lowbat-suspend.service /etc/systemd/system &&
-    sudo ln -sfv $path_origin/services/lowbat-suspend.sh /etc/systemd/system&&
+    sudo cp -fv $path_origin/services/lowbat-suspend.timer /etc/systemd/system &&
+    sudo cp -fv $path_origin/services/lowbat-suspend.service /etc/systemd/system &&
+    sudo cp -fv $path_origin/services/lowbat-suspend.sh /etc/systemd/system&&
     sudo systemctl enable lowbat-suspend.timer && 
     sudo systemctl start lowbat-suspend.timer
 
     #Suspend
-    sudo ln -sfv $path_origin/services/suspend.service /etc/systemd/system &&
-    sudo ln -sfv $path_origin/services/suspend.sh /etc/systemd/system &&
+    sudo cp -fv $path_origin/services/suspend.service /etc/systemd/system &&
+    sudo cp -fv $path_origin/services/suspend.sh /etc/systemd/system &&
     sudo systemctl enable suspend.service
 fi
 
