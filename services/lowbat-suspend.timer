@@ -8,4 +8,4 @@ OnUnitActiveSec=60
 AccuracySec=10
 
 [Install]
-WantedBy=timer.target
+WantedBy=timers.target
