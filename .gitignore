@@ -52,6 +52,6 @@ Mkfile.old
 dkms.conf
 
 # Dwm
-*dwm
+config/dwm/dwm
 *.orig
 *.rej
