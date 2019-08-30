@@ -50,3 +50,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Dwm
+/config/dwm/dwm
+/config/dwm/config.h
+*.orig
+*.rej
