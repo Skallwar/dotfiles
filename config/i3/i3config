@@ -30,7 +30,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec i3-sensile-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -43,7 +43,7 @@ bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # Background
-exec --no-startup-id feh --recursive --randomize --bg-fill ~/dotfiles/IMG/DESKTOP
+exec --no-startup-id feh --recursive --randomize --bg-fill ~/.dotfiles/img/desktop
 
 # change focus
 bindsym $mod+h focus left
