@@ -14,6 +14,7 @@ Plugin 'tpope/vim-fugitive'
 
 "Languages server
 Plugin 'w0rp/ale'
+Plugin 'ludovicchabant/vim-gutentags'
 
 "Rust
 Plugin 'rust-lang/rust.vim'
@@ -33,7 +34,6 @@ syntax on
 set path=$PWD/**
 set number
 set cursorline 
-set foldmethod=syntax
 set wildmenu
 set cc=80
 
@@ -43,6 +43,11 @@ set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
+
+"Fold
+set foldmethod=syntax
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview 
 
 "Theme
 set background=dark
