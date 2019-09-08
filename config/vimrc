@@ -22,6 +22,7 @@ Plugin 'rust-lang/rust.vim'
 "Code
 Plugin 'sheerun/vim-polyglot'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'luochen1990/rainbow'
 
 "Tools
 Plugin 'vim-airline/vim-airline'
@@ -52,6 +53,7 @@ autocmd BufWinEnter *.* silent loadview
 "Theme
 set background=dark
 set t_ut=
+let g:rainbow_active = 1
 
 "Plugin
 let g:ale_linters_explicit = 1
