@@ -173,4 +173,4 @@ bar {
 }
 
 # Custom bind
-bindsym $mod+Control+l exec i3lock -i $(find ~/dotfiles/IMG/DESKTOP/ -name "*png" | shuf -n1)
+bindsym $mod+Control+l exec ~/.dotfiles/lock.sh
