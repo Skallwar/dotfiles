@@ -33,6 +33,7 @@ syntax on
 set path=$PWD/**
 set number
 set cursorline 
+set foldmethod=syntax
 set wildmenu
 set cc=80
 
