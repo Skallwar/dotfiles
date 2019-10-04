@@ -34,21 +34,24 @@ filetype plugin indent on    " required
 syntax on
 set path=$PWD/**
 set number
-set cursorline 
+set cursorline
 set wildmenu
 set cc=80
+set scrolloff=5
+set list!
+set listchars=trail:.,tab:>-,eol:¬
 
 "Indentation
 set autoindent
 set smartindent
-set tabstop=4
+set tabstop=8
 set shiftwidth=4
 set expandtab
 
 "Fold
 set foldmethod=syntax
 autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview 
+autocmd BufWinEnter *.* silent loadview
 
 "Theme
 set background=dark
