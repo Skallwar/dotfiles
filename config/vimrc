@@ -68,7 +68,7 @@ let g:ale_fixers = {}
 
 ""Dev
 "C
-" let g:ale_linters.c = ['clangd']
+let g:ale_linters.c = ['clangd', 'clang-tidy']
 let g:ale_fixers.c = ['clang-format']
 
 "Rust
