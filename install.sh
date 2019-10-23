@@ -18,20 +18,6 @@ ln -sfv $path_origin/config/vimrc $path_target/.vimrc
 ln -sfv $path_origin/config/zshrc $path_target/.zshrc
 echo
 
-echo -n "Install dwm and st? [y/N]: "
-read needDwn
-if [ "$needDwm" = "y" -o "$needDwm" = "Y" ]
-then
-    #Dwm
-    cd $path_origin/dwm/
-    make
-    cd ..
-
-    #St
-    cd $path_origin/st/
-    make
-    cd ..
-fi
 
 echo -n "Install laptop services? [y/N]: "
 read needServices
