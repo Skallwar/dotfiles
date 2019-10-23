@@ -18,6 +18,12 @@ ln -sfv $path_origin/config/vimrc $path_target/.vimrc
 ln -sfv $path_origin/config/zshrc $path_target/.zshrc
 echo
 
+echo -n "Install i3 config? [y/N]: "
+read needi3
+if [ "$needi3" = "y" -o "$needi3" = "Y" ]
+then
+    ln -sfv $path_origin/config/i3/i3config $path_target/.config/i3/config
+fi
 
 echo -n "Install laptop services? [y/N]: "
 read needServices
