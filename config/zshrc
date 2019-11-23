@@ -1,3 +1,9 @@
+#History
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+
 export PS1="[%n@%M %~]$ "
 
 #Completion
@@ -27,7 +33,6 @@ alias zshrc="vim $(readlink ~/.zshrc)"
 alias vimrc="vim $(readlink ~/.vimrc)"
 alias ls="ls --color=auto"
 alias tree="tree -C"
-alias rm="echo Use trash"
 alias lock="~/.dotfiles/lock.sh"
 alias listpkg='yay -Qet'
 # alias untar="tar -xvf "
