@@ -49,11 +49,6 @@ set tabstop=8
 set shiftwidth=4
 set expandtab
 
-"Fold
-set foldmethod=syntax
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview
-
 "Theme
 set background=dark
 set t_ut=
