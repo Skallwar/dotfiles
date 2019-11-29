@@ -2,7 +2,7 @@
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 #Ssh
-eval `ssh-agent -s` &
+eval $(ssh-agent)
 
 # NetworkManager
 nm-applet &
