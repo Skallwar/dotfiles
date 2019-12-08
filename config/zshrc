@@ -4,9 +4,13 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
 
+#No beep
+unsetopt beep
+
 export PS1="[%n@%M %~]$ "
 
 #Completion
+zstyle :compinstall filename '/home/esteban/.zshrc'
 zstyle ':completion:*' menu select
 zstyle ':completion:*' completer _complete
 autoload -U compinit && compinit
@@ -27,6 +31,7 @@ export EDITOR="vim"
 
 #Don't use vim keybing
 bindkey -e
+bindkey "\e[3~" delete-char
 
 # Alias
 alias zshrc="vim $(readlink ~/.zshrc)"
