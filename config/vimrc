@@ -40,7 +40,7 @@ set wildmenu
 set cc=80
 set scrolloff=5
 set list!
-set listchars=trail:.,tab:>-,eol:¬
+set listchars=trail:.,tab:>\ ,eol:¬
 
 "Indentation
 set autoindent
