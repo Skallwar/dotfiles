@@ -28,6 +28,7 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 #Export
 export EDITOR="vim"
+export PATH="${PATH}:$HOME/.cargo/bin"
 
 #Don't use vim keybing
 bindkey -e
@@ -40,6 +41,7 @@ alias ls="ls --color=auto"
 alias tree="tree -C"
 alias lock="~/.dotfiles/lock.sh"
 alias listpkg='yay -Qet'
+alias suspend='systemctl suspend'
+alias hotspot='nmcli connection up Arch-USB || nmcli connection up Arch-PCI'
 # alias untar="tar -xvf "
 # alias untargz="tar -zxvf "
-# alias ssh-add-keys='ssh-add ~/.ssh/*id_rsa'
