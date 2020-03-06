@@ -13,11 +13,16 @@ then
     path_target="$path_origin/$path_target"
 fi
 
+echo -n "Install dotfiles? [y/N]: "
+read needdot
+if [ "$needdot" = "y" -o "$needdot" = "Y" ]
+then
 echo Installing config files
 ln -sfv $path_origin/.dotfiles/config/vimrc $path_target/.vimrc
 ln -sfv $path_origin/.dotfiles/config/zshrc $path_target/.zshrc
 ln -sfv $path_origin/.dotfiles/config/xinitrc $path_target/.xinitrc
 echo
+fi
 
 echo -n "Install i3 config? [y/N]: "
 read needi3
