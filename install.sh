@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 path_origin="$(pwd)"
 path_target="$1"
@@ -18,9 +18,9 @@ read needdot
 if [ "$needdot" = "y" -o "$needdot" = "Y" ]
 then
 echo Installing config files
-ln -sfv $path_origin/.dotfiles/config/vimrc $path_target/.vimrc
-ln -sfv $path_origin/.dotfiles/config/zshrc $path_target/.zshrc
-ln -sfv $path_origin/.dotfiles/config/xinitrc $path_target/.xinitrc
+ln -sfv $path_origin/config/vimrc $path_target/.vimrc
+ln -sfv $path_origin/config/zshrc $path_target/.zshrc
+ln -sfv $path_origin/config/xinitrc $path_target/.xinitrc
 echo
 fi
 
