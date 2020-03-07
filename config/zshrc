@@ -7,7 +7,8 @@ setopt appendhistory
 #No beep
 unsetopt beep
 
-export PS1="[%n@%M %~]$ "
+PROMPT="[%F{yellow}%n%f@%F{green}%m%f %F{blue}%~%f]%F{red}$%f "
+RPS1=""
 
 #Completion
 zstyle :compinstall filename '/home/esteban/.zshrc'
