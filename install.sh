@@ -48,4 +48,14 @@ then
     sudo systemctl enable suspend.service
 fi
 
+echo -n "Install U2F config? [y/N]: "
+read needU2F
+if [ "$needU2F" = "y" -o "$needU2F" = "Y" ]
+then
+    sudo pacman -S pam-u2f
+    sudo sed -i '2iauth		sufficient	pam_u2f.so origin=pam://hostname appid=pam://hostname cue [prompt=Please touch the device]' /etc/pam.d/sudo
+    sudo sed -i '3iauth		sufficient	pam_u2f.so origin=pam://hostname appid=pam://hostname' /etc/pam.d/login
+    sudo sed -i '6iauth		sufficient	pam_u2f.so origin=pam://hostname appid=pam://hostname' /etc/pam.d/i3lock
+fi
+
 exit 0
