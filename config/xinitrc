@@ -10,5 +10,8 @@ eval $(ssh-agent)
 # NetworkManager
 nm-applet &
 
+# Keyboard
+setxkbmap us -option caps:escape &
+
 # Dm
 exec i3
