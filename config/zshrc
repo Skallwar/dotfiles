@@ -29,7 +29,7 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 #Export
 export EDITOR="vim"
-export PATH="${PATH}:$HOME/.cargo/bin"
+export PATH="${PATH}:$HOME/.cargo/bin:${HOME}/.local/bin"
 
 #Don't use vim keybing
 bindkey -e
