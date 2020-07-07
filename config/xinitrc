@@ -10,6 +10,9 @@ eval $(ssh-agent)
 # NetworkManager
 nm-applet &
 
+# Redshift
+redshift -l 48.84:2.35
+
 # Keyboard
 setxkbmap us -option caps:escape &
 
