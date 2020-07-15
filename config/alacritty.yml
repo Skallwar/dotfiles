@@ -2,6 +2,18 @@ env:
   TERM: xterm-256color
 
 font:
+  normal:
+    family: Source Code Pro
+    # family: TerminessTTF Nerd Font Mono
+
+  bold:
+    family: Source Code Pro
+    # family: TerminessTTF Nerd Font Mono
+
+  italic:
+    family: Source Code Pro
+    # family: TerminessTTF Nerd Font Mono
+
   size: 7.0
 
 # Kitty
