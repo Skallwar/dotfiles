@@ -1,8 +1,21 @@
+# Unlimited history
+HISTSIZE=
+HISTFILESIZE=
+
 # Use bash-completion, if available
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
     . /usr/share/bash-completion/bash_completion
 
-export PS1="[\[$(tput sgr0)\]\[\033[38;5;3m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[38;5;2m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;4m\]\w\[$(tput sgr0)\]]\[$(tput sgr0)\]\[\033[38;5;1m\]\\$\[$(tput sgr0)\] "
+function prompt_cmd
+{
+    res=$?
+    if [[ "$res" == "0" ]]; then
+        export PS1="[\[$(tput sgr0)\]\[\033[38;5;3m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[38;5;2m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;4m\]\w\[$(tput sgr0)\]]\[$(tput sgr0)\]\[\033[38;5;1m\]\\$\[$(tput sgr0)\] "
+    else
+        export PS1="[\[$(tput sgr0)\]\[\033[38;5;3m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[38;5;2m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;4m\]\w\[$(tput sgr0)\]]\[$(tput sgr0)\]\\[[\033[38;5;1m\]$res\[$(tput sgr0)\]]\[\033[38;5;1m\]$\[$(tput sgr0)\] "
+    fi
+}
+PROMPT_COMMAND=prompt_cmd
 
 # Man colors
 export LESS_TERMCAP_mb=$'\e[1;32m'
