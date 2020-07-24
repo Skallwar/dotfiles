@@ -6,18 +6,35 @@ shells="bash zsh"
 echo Welcome $USER@$HOSTNAME on $arch !
 
 echo "Install dependencies"
-yay -S 'stow'
+yay -S stow jq
 
 echo -n "Wich shell do you use ?: "
 read shell
-yay -S "$shell"
+yay -S $shell
+stow $shell
 
-echo -n "Install dotfiles? [y/N]: ";
+echo -n "Install apps? [y/N]: "
+read needApps
+if [ "$needApps" = "y" -o "$needApps" = "Y" ]; then
+    yay -S vim alacritty i3 bitwarden-cli
+    echo "Please login to bitwarden"
+    bw login --raw > ~/.config/Bitwarden\ CLI/session.txt
+fi
+
+echo -n "Install dotfiles? [y/N]: "
 read needdot
 if [ "$needdot" = "y" -o "$needdot" = "Y" ]; then
     for folder in $(ls -d */); do
         stow "$folder"
     done
+fi
+
+echo -n "Import ssh private key? [y/N]: "
+read needssh
+if [ "$needssh" = "y" -o "$needssh" = "Y" ]; then
+    echo "Import ssh key nam?: "
+    read key
+    bw --session $(cat ~/.config/Bitwarden\ CLI/session.txt) get item $key | jq -r '.notes' > ~/.ssh/id_rsa
 fi
 
 echo -n "Install laptop services? [y/N]: "
@@ -43,7 +60,7 @@ fi
 echo -n "Install spotifyd ? [y/N]: "
 read needSpotifyd
 if [ "$needSpotifyd" = "y" -o "$needSpotifyd" = "Y" ]; then
-    yay spotifyd spotify-tui
+    yay -S spotifyd spotify-tui
 
     systemctl --user enable spotifyd.service &&
     systemctl --user start spotifyd.service
