@@ -71,5 +71,5 @@ let g:ale_linters.c = ['clangd', 'clang-tidy']
 let g:ale_fixers.c = ['clang-format']
 
 "Rust
-let g:ale_linters.rust = ['rls']
+let g:ale_linters.rust = ['analyser']
 " let g:ale_fixers.rust = ['rustfmt']

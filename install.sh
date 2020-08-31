@@ -1,17 +1,11 @@
 #!/bin/sh
 
 arch=$(cat /etc/os-release | grep "^ID" | cut -d "=" -f2)
-shells="bash zsh"
 
 echo Welcome $USER@$HOSTNAME on $arch !
 
 echo "Install dependencies"
-yay -S stow jq
-
-echo -n "Wich shell do you use ?: "
-read shell
-yay -S $shell
-stow $shell
+yay -S jq
 
 echo -n "Install apps? [y/N]: "
 read needApps

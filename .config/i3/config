@@ -180,4 +180,4 @@ bar {
 }
 
 # Custom bind
-bindsym $mod+Control+l exec ~/.dotfiles/lock.sh
+bindsym $mod+Control+l exec ~/.dotfiles/scripts/lock.sh

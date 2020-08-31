@@ -1,3 +1,6 @@
+# Keyboard
+setxkbmap us -option caps:escape &
+
 # Dock
 xrandr --auto &
 
@@ -11,10 +14,7 @@ eval $(ssh-agent)
 nm-applet &
 
 # Redshift
-redshift -l 48.84:2.35 -t 6500:4000 &
-
-# Keyboard
-setxkbmap us -option caps:escape &
+redshift -l 48.84:2.35 -t 6500:3500 &
 
 # Dm
 exec i3
