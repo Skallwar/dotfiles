@@ -24,15 +24,18 @@ fi
 echo -n "Install dotfiles? [y/N]: "
 read needdot
 if [ "$needdot" = "y" -o "$needdot" = "Y" ]; then
-    for folder in $(ls -d */); do
-        stow "$folder"
+    # WARNING: No '/' at the end of folders
+    configs=( ".vimrc" ".bashrc" ".xinitrc" ".wallpaper" ".config/i3" ".config/i3status" ".makepkg.conf" ".config/alacritty" ".config/spotifyd" ".config/systemd" )
+
+    for config in ${configs[@]}; do
+        ln -sTi "$PWD/$config" "$HOME/$config"
     done
 fi
 
 echo -n "Import ssh private key? [y/N]: "
 read needssh
 if [ "$needssh" = "y" -o "$needssh" = "Y" ]; then
-    echo "Import ssh key nam?: "
+    echo "Import ssh key name?: "
     read key
     bw --session $(cat ~/.config/Bitwarden\ CLI/session.txt) get item $key | jq -r '.notes' > ~/.ssh/id_rsa
 fi
