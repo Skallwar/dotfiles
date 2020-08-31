@@ -3,5 +3,4 @@ Description=Suspend on low battery
 
 [Service]
 Type=oneshot
-ExecStart=./lowbat-suspend.sh
-User=root
+ExecStart=/etc/systemd/system/lowbat-suspend.sh

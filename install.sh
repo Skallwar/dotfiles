@@ -44,11 +44,15 @@ echo -n "Install laptop services? [y/N]: "
 read needLaptopServices
 if [ "$needLaptopServices" = "y" -o "$needLaptopServices" = "Y" ]; then
     #Lowbat-suspend
-    systemctl --user enable lowbat-suspend.timer && 
-    systemctl --user start lowbat-suspend.timer
+    for file in $(ls services); do
+        sudo ln -sTi /home/$USER/.dotfiles/services/$file /etc/systemd/system/$file
+    done
+
+    sudo systemctl enable lowbat-suspend.timer &&
+    sudo systemctl start lowbat-suspend.timer
 
     #Suspend
-    systemctl --user enable suspend.service
+    sudo systemctl enable i3lock.service
 fi
 
 echo -n "Install U2F config? [y/N]: "
