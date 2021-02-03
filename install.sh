@@ -1,8 +1,8 @@
 #!/bin/sh
 
-arch=$(cat /etc/os-release | grep "^ID" | cut -d "=" -f2)
+os=$(cat /etc/os-release | grep "^ID" | cut -d "=" -f2)
 
-echo Welcome $USER@$HOSTNAME on $arch !
+echo Welcome $USER@$HOSTNAME on $os!
 
 echo "Install dependencies"
 yay -S jq
@@ -10,9 +10,14 @@ yay -S jq
 echo -n "Install apps? [y/N]: "
 read needApps
 if [ "$needApps" = "y" -o "$needApps" = "Y" ]; then
-    yay -S vim alacritty i3 bitwarden-cli
-    echo "Please login to bitwarden"
-    bw login --raw > ~/.config/Bitwarden\ CLI/session.txt
+    if [ "$os" = "nixos" ]; then
+        sudo ln -sTi "$PWD/nixos/configuration.nix" '/etc/nixos/configuration.nix'
+        echo 'You may want to change the host name in /etc/nixos/configuration.nix'
+    elif [ "$os" = "archlinux" ]; then
+        yay -S vim alacritty i3 bitwarden-cli
+        echo "Please login to bitwarden"
+        bw login --raw > ~/.config/Bitwarden\ CLI/session.txt
+    fi
 fi
 
 echo -n "Install dotfiles? [y/N]: "
