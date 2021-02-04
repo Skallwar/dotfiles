@@ -76,7 +76,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget vim ctags alacritty git
+    wget vim ctags alacritty git htop
     arandr
     firefox
   ];
