@@ -13,6 +13,7 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.extraModprobeConfig = "drm_kms_helper\noptions drm_kms_helper poll=N";
 
   networking.hostName = "burritoblues"; # Define your hostname.
   networking.networkmanager.enable = true; # Use NetworkManger
