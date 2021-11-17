@@ -37,6 +37,8 @@ export PATH="${PATH}:$HOME/.cargo/bin:${HOME}/.local/bin"
 
 # Alias
 alias zshrc="vim $(readlink ~/.zshrc)"
+eval "$(thefuck --alias)"
+alias bashrc="vim $(readlink ~/.bashrc)"
 alias vimrc="vim $(readlink ~/.vimrc)"
 alias ls="ls --color=auto"
 alias tree="tree -C"
