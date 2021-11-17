@@ -24,7 +24,7 @@ echo -n "Install dotfiles? [y/N]: "
 read needdot
 if [ "$needdot" = "y" -o "$needdot" = "Y" ]; then
     # WARNING: No '/' at the end of folders
-    configs=( ".vimrc" ".bashrc" ".xinitrc" ".wallpaper" ".config/i3" ".config/i3status" ".makepkg.conf" ".config/alacritty" ".config/spotifyd" ".config/systemd" )
+    configs=( ".vimrc" ".bashrc" ".xinitrc" ".wallpaper" ".config/i3" ".config/i3status" ".makepkg.conf" ".config/alacritty" ".config/spotifyd" ".config/systemd" ".config/nvim" )
 
     for config in ${configs[@]}; do
         ln -sTi "$PWD/$config" "$HOME/$config"
