@@ -1,6 +1,7 @@
 # Unlimited history
-HISTSIZE=
-HISTFILESIZE=
+export HISTSIZE=-1
+export HISTFILESIZE=-1
+export HISTFILE=~/.bash_eternal_history
 
 # Use bash-completion, if available
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
