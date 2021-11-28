@@ -1,0 +1,120 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/esteban/.dotfiles/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/p5.9.20210905.0/
+AccuracySec	services/lowbat-suspend.timer	/^AccuracySec=10$/;"	k	section:Timer
+After	.config/systemd/user/default.target.wants/spotifyd.service	/^After=network-online.target$/;"	k	section:Unit
+After	.config/systemd/user/default.target.wants/spotifyd.service	/^After=sound.target$/;"	k	section:Unit
+After	.config/systemd/user/spotifyd.service	/^After=network-online.target$/;"	k	section:Unit
+After	.config/systemd/user/spotifyd.service	/^After=sound.target$/;"	k	section:Unit
+BUILDDIR	.makepkg.conf	/^BUILDDIR=\/tmp\/makepkg$/;"	k
+BUILDENV	.makepkg.conf	/^BUILDENV=(!distcc color !ccache check !sign)$/;"	k
+Before	services/i3lock.service	/^Before=sleep.target$/;"	k	section:Unit
+CARCH	.makepkg.conf	/^CARCH="x86_64"$/;"	k
+CFLAGS	.makepkg.conf	/^CFLAGS="-march=native -O2 -pipe -fno-plt"$/;"	k
+CHOST	.makepkg.conf	/^CHOST="x86_64-pc-linux-gnu"$/;"	k
+COMPRESSBZ2	.makepkg.conf	/^COMPRESSBZ2=(pbzip2 -c -f)$/;"	k
+COMPRESSGZ	.makepkg.conf	/^COMPRESSGZ=(pigz -c -f -n)$/;"	k
+COMPRESSLRZ	.makepkg.conf	/^COMPRESSLRZ=(lrzip -q)$/;"	k
+COMPRESSLZ	.makepkg.conf	/^COMPRESSLZ=(lzip -c -f)$/;"	k
+COMPRESSLZ4	.makepkg.conf	/^COMPRESSLZ4=(lz4 -q)$/;"	k
+COMPRESSLZO	.makepkg.conf	/^COMPRESSLZO=(lzop -q)$/;"	k
+COMPRESSXZ	.makepkg.conf	/^COMPRESSXZ=(xz -c -z - --threads=0) # 0: As many core as possible$/;"	k
+COMPRESSZ	.makepkg.conf	/^COMPRESSZ=(compress -c -f)$/;"	k
+COMPRESSZST	.makepkg.conf	/^COMPRESSZST=(zstd -c -z -q - --threads=0) # 0: As many core as possible$/;"	k
+CPPFLAGS	.makepkg.conf	/^CPPFLAGS="-D_FORTIFY_SOURCE=2"$/;"	k
+CXXFLAGS	.makepkg.conf	/^CXXFLAGS="-march=native -O2 -pipe -fno-plt"$/;"	k
+DBGSRCDIR	.makepkg.conf	/^DBGSRCDIR="\/usr\/src\/debug"$/;"	k
+DEBUG_CFLAGS	.makepkg.conf	/^DEBUG_CFLAGS="-g -fvar-tracking-assignments"$/;"	k
+DEBUG_CXXFLAGS	.makepkg.conf	/^DEBUG_CXXFLAGS="-g -fvar-tracking-assignments"$/;"	k
+DLAGENTS	.makepkg.conf	/^DLAGENTS=('file::\/usr\/bin\/curl -gqC - -o %o %u'$/;"	k
+DOC_DIRS	.makepkg.conf	/^DOC_DIRS=(usr\/{,local\/}{,share\/}{doc,gtk-doc} opt\/*\/{doc,gtk-doc})$/;"	k
+Description	.config/systemd/user/default.target.wants/spotifyd.service	/^Description=A spotify playing daemon$/;"	k	section:Unit
+Description	.config/systemd/user/spotifyd.service	/^Description=A spotify playing daemon$/;"	k	section:Unit
+Description	services/i3lock.service	/^Description=User suspend actions$/;"	k	section:Unit
+Description	services/lowbat-suspend.service	/^Description=Suspend on low battery$/;"	k	section:Unit
+Description	services/lowbat-suspend.timer	/^Description=1 minute timer for lowbat service$/;"	k	section:Unit
+Documentation	.config/systemd/user/default.target.wants/spotifyd.service	/^Documentation=https:\/\/github.com\/Spotifyd\/spotifyd$/;"	k	section:Unit
+Documentation	.config/systemd/user/spotifyd.service	/^Documentation=https:\/\/github.com\/Spotifyd\/spotifyd$/;"	k	section:Unit
+Environment	services/i3lock.service	/^Environment=DISPLAY=:0$/;"	k	section:Service
+ExecStart	.config/systemd/user/default.target.wants/spotifyd.service	/^ExecStart=\/usr\/bin\/spotifyd --no-daemon$/;"	k	section:Service
+ExecStart	.config/systemd/user/spotifyd.service	/^ExecStart=\/usr\/bin\/spotifyd --no-daemon$/;"	k	section:Service
+ExecStart	services/i3lock.service	/^ExecStart=\/etc\/systemd\/system\/i3lock.sh$/;"	k	section:Service
+ExecStart	services/lowbat-suspend.service	/^ExecStart=\/etc\/systemd\/system\/lowbat-suspend.sh$/;"	k	section:Service
+ExecStartPost	services/i3lock.service	/^ExecStartPost=\/usr\/bin\/sleep 1$/;"	k	section:Service
+INTEGRITY_CHECK	.makepkg.conf	/^INTEGRITY_CHECK=(md5)$/;"	k
+Install	.config/systemd/user/default.target.wants/spotifyd.service	/^[Install]$/;"	s
+Install	.config/systemd/user/spotifyd.service	/^[Install]$/;"	s
+Install	README.md	/^## Install$/;"	s	chapter:dotfiles
+Install	services/i3lock.service	/^[Install]$/;"	s
+Install	services/lowbat-suspend.timer	/^[Install]$/;"	s
+LDFLAGS	.makepkg.conf	/^LDFLAGS="-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now"$/;"	k
+MAKEFLAGS	.makepkg.conf	/^MAKEFLAGS="-j$(nproc) -l 10"$/;"	k
+MAN_DIRS	.makepkg.conf	/^MAN_DIRS=({usr{,\/local}{,\/share},opt\/*}\/{man,info})$/;"	k
+OPTIONS	.makepkg.conf	/^OPTIONS=(strip docs !libtool !staticlibs emptydirs zipman purge !debug)$/;"	k
+OnBootSec	services/lowbat-suspend.timer	/^OnBootSec=1 m$/;"	k	section:Timer
+OnUnitActiveSec	services/lowbat-suspend.timer	/^OnUnitActiveSec=60$/;"	k	section:Timer
+PKGEXT	.makepkg.conf	/^PKGEXT='.pkg.tar.xz'$/;"	k
+PURGE_TARGETS	.makepkg.conf	/^PURGE_TARGETS=(usr\/{,share}\/info\/dir .packlist *.pod)$/;"	k
+Requires	services/lowbat-suspend.timer	/^Requires=lowbat-suspend.service$/;"	k	section:Unit
+Restart	.config/systemd/user/default.target.wants/spotifyd.service	/^Restart=always$/;"	k	section:Service
+Restart	.config/systemd/user/spotifyd.service	/^Restart=always$/;"	k	section:Service
+RestartSec	.config/systemd/user/default.target.wants/spotifyd.service	/^RestartSec=12$/;"	k	section:Service
+RestartSec	.config/systemd/user/spotifyd.service	/^RestartSec=12$/;"	k	section:Service
+SRCEXT	.makepkg.conf	/^SRCEXT='.src.tar.gz'$/;"	k
+STRIP_BINARIES	.makepkg.conf	/^STRIP_BINARIES="--strip-all"$/;"	k
+STRIP_SHARED	.makepkg.conf	/^STRIP_SHARED="--strip-unneeded"$/;"	k
+STRIP_STATIC	.makepkg.conf	/^STRIP_STATIC="--strip-debug"$/;"	k
+Service	.config/systemd/user/default.target.wants/spotifyd.service	/^[Service]$/;"	s
+Service	.config/systemd/user/spotifyd.service	/^[Service]$/;"	s
+Service	services/i3lock.service	/^[Service]$/;"	s
+Service	services/lowbat-suspend.service	/^[Service]$/;"	s
+Timer	services/lowbat-suspend.timer	/^[Timer]$/;"	s
+Type	services/i3lock.service	/^Type=forking$/;"	k	section:Service
+Type	services/lowbat-suspend.service	/^Type=oneshot$/;"	k	section:Service
+Unit	.config/systemd/user/default.target.wants/spotifyd.service	/^[Unit]$/;"	s
+Unit	.config/systemd/user/spotifyd.service	/^[Unit]$/;"	s
+Unit	services/i3lock.service	/^[Unit]$/;"	s
+Unit	services/lowbat-suspend.service	/^[Unit]$/;"	s
+Unit	services/lowbat-suspend.timer	/^[Unit]$/;"	s
+User	services/i3lock.service	/^User=esteban$/;"	k	section:Service
+VCSCLIENTS	.makepkg.conf	/^VCSCLIENTS=('bzr::bzr'$/;"	k
+WantedBy	.config/systemd/user/default.target.wants/spotifyd.service	/^WantedBy=default.target$/;"	k	section:Install
+WantedBy	.config/systemd/user/spotifyd.service	/^WantedBy=default.target$/;"	k	section:Install
+WantedBy	services/i3lock.service	/^WantedBy=sleep.target$/;"	k	section:Install
+WantedBy	services/lowbat-suspend.timer	/^WantedBy=timers.target$/;"	k	section:Install
+Wants	.config/systemd/user/default.target.wants/spotifyd.service	/^Wants=network-online.target$/;"	k	section:Unit
+Wants	.config/systemd/user/default.target.wants/spotifyd.service	/^Wants=sound.target$/;"	k	section:Unit
+Wants	.config/systemd/user/spotifyd.service	/^Wants=network-online.target$/;"	k	section:Unit
+Wants	.config/systemd/user/spotifyd.service	/^Wants=sound.target$/;"	k	section:Unit
+bitrate	.config/spotifyd/spotifyd.conf	/^bitrate = 320$/;"	k	section:global
+device_name	.config/spotifyd/spotifyd.conf	/^device_name = Spotifyd@oakfire$/;"	k	section:global
+device_type	.config/spotifyd/spotifyd.conf	/^device_type = computer$/;"	k	section:global
+dotfiles	README.md	/^# dotfiles$/;"	c
+g:ale_cpp_clangtidy_options	.vimrc	/^let g:ale_cpp_clangtidy_options = '.\/'$/;"	v
+g:ale_fix_on_save	.vimrc	/^let g:ale_fix_on_save = 1$/;"	v
+g:ale_fixers	.vimrc	/^let g:ale_fixers = {}$/;"	v
+g:ale_fixers	.vimrc	/^let g:ale_fixers.c = ['clang-format']$/;"	v
+g:ale_fixers	.vimrc	/^let g:ale_fixers.rust = ['rustfmt']$/;"	v
+g:ale_lint_on_insert_leave	.vimrc	/^let g:ale_lint_on_insert_leave = 0$/;"	v
+g:ale_lint_on_text_changed	.vimrc	/^let g:ale_lint_on_text_changed = 'never'$/;"	v
+g:ale_linters	.vimrc	/^let g:ale_linters = {}$/;"	v
+g:ale_linters	.vimrc	/^let g:ale_linters.c = ['clangd', 'clang-tidy']$/;"	v
+g:ale_linters	.vimrc	/^let g:ale_linters.rust = ['analyzer']$/;"	v
+g:ale_linters	.vimrc	/^let g:ale_linters.systemverilog = ['verilator']$/;"	v
+g:ale_linters_explicit	.vimrc	/^let g:ale_linters_explicit = 1$/;"	v
+g:rainbow_active	.vimrc	/^let g:rainbow_active = 1$/;"	v
+global	.config/spotifyd/spotifyd.conf	/^[global]$/;"	s
+initial_volume	.config/spotifyd/spotifyd.conf	/^initial_volume = 50$/;"	k	section:global
+no_audio_cache	.config/spotifyd/spotifyd.conf	/^no_audio_cache = true$/;"	k	section:global
+normalisation_pregain	.config/spotifyd/spotifyd.conf	/^normalisation_pregain = -10$/;"	k	section:global
+password_cmd	.config/spotifyd/spotifyd.conf	/^password_cmd = bw --session $(cat ~\/.config\/Bitwarden\\ CLI\/session.txt) sync > \/dev\/null; /;"	k	section:global
+username	.config/spotifyd/spotifyd.conf	/^username =estblcsk@gmail.com$/;"	k	section:global
+volume_normalisation	.config/spotifyd/spotifyd.conf	/^volume_normalisation = true$/;"	k	section:global

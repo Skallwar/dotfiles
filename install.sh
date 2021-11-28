@@ -1,75 +1,86 @@
-#!/bin/sh
+#!/bin/env bash
+
+GREEN="\033[0;32m"
+YELLOW="\033[0;33m"
+RED="\033[0;31m"
+NC="\033[0;39m"
 
 os=$(cat /etc/os-release | grep "^ID" | cut -d "=" -f2)
 
-echo Welcome $USER@$HOSTNAME on $os!
+function os_specific() {
+    case $os in
+        arch)
+            yay -S i3 alacritty pam-u2f
+            ;;
+    esac
+}
 
-echo "Install dependencies"
-yay -S jq
-
-echo -n "Install apps? [y/N]: "
-read needApps
-if [ "$needApps" = "y" -o "$needApps" = "Y" ]; then
-    if [ "$os" = "nixos" ]; then
-        sudo ln -sTi "$PWD/nixos/configuration.nix" '/etc/nixos/configuration.nix'
-        echo 'You may want to change the host name in /etc/nixos/configuration.nix'
-    elif [ "$os" = "archlinux" ]; then
-        yay -S vim alacritty i3 bitwarden-cli
-        echo "Please login to bitwarden"
-        bw login --raw > ~/.config/Bitwarden\ CLI/session.txt
-    fi
-fi
-
-echo -n "Install dotfiles? [y/N]: "
-read needdot
-if [ "$needdot" = "y" -o "$needdot" = "Y" ]; then
+function home_config() {
     # WARNING: No '/' at the end of folders
-    configs=( ".vimrc" ".bashrc" ".xinitrc" ".wallpaper" ".config/i3" ".config/i3status" ".makepkg.conf" ".config/alacritty" ".config/spotifyd" ".config/systemd" ".config/nvim" )
+    configs=( "vimrc" "bashrc" "xinitrc" "wallpaper" "config/i3" "config/i3status" "makepkg.conf" "config/alacritty" "config/spotifyd" "config/systemd" "config/nvim" )
 
     for config in ${configs[@]}; do
-        ln -sTi "$PWD/$config" "$HOME/$config"
+        if [[ $config == config/* ]]; then
+            config=${string#"config/"}
+            ln -sTi "$PWD/$config" "$HOME/.config/$config"
+        else
+            ln -sTi "$PWD/$config" "$HOME/.$config"
+        fi
     done
-fi
+}
 
-echo -n "Import ssh private key? [y/N]: "
-read needssh
-if [ "$needssh" = "y" -o "$needssh" = "Y" ]; then
-    echo "Import ssh key name?: "
-    read key
-    bw --session $(cat ~/.config/Bitwarden\ CLI/session.txt) get item $key | jq -r '.notes' > ~/.ssh/id_rsa
-fi
+function is_laptop() {
+    if [ -d "/sys/class/power_supply" ]; then
+        return 0
+    fi
 
-echo -n "Install laptop services? [y/N]: "
-read needLaptopServices
-if [ "$needLaptopServices" = "y" -o "$needLaptopServices" = "Y" ]; then
-    #Lowbat-suspend
-    for file in $(ls services); do
-        sudo ln -sTi /home/$USER/.dotfiles/services/$file /etc/systemd/system/$file
+    return 1
+}
+
+function services() {
+    if [[ `/sbin/init --version` =~ upstart ]]; then
+        init=upstart
+    elif [[ `systemctl` =~ -\.mount ]]; then 
+        init=systemd
+        service_dest=/etc/systemd/system
+    elif [[ -f /etc/init.d/cron && ! -h /etc/init.d/cron ]]; then
+        init=sysv-init
+    else
+        echo "[${YELLOW}Warning${NC}] Unable to detect init system, skipping."
+        return 1
+    fi
+
+    for file in $(ls services/$init); do
+        sudo ln -sTi "$PWD/services/$init/$file" "$service_dest/$file"
     done
 
-    sudo systemctl enable lowbat-suspend.timer &&
-    sudo systemctl start lowbat-suspend.timer
+    if is_laptop; then
+        sudo systemctl enable lowbat-suspend.timer &&
+        sudo systemctl start lowbat-suspend.timer
 
-    #Suspend
-    sudo systemctl enable i3lock.service
-fi
+        #Suspend
+        sudo systemctl enable i3lock.service
+    fi
+}
 
-echo -n "Install U2F config? [y/N]: "
-read needU2F
-if [ "$needU2F" = "y" -o "$needU2F" = "Y" ]; then
-    yay -S pam-u2f
+function u2f_config() {
     sudo sed -i '2iauth		sufficient	pam_u2f.so origin=pam://hostname appid=pam://hostname cue [prompt=Please touch the device]' /etc/pam.d/sudo
     sudo sed -i '3iauth		sufficient	pam_u2f.so origin=pam://hostname appid=pam://hostname' /etc/pam.d/login
     sudo sed -i '6iauth		sufficient	pam_u2f.so origin=pam://hostname appid=pam://hostname' /etc/pam.d/i3lock
-fi
+}
 
-echo -n "Install spotifyd ? [y/N]: "
-read needSpotifyd
-if [ "$needSpotifyd" = "y" -o "$needSpotifyd" = "Y" ]; then
-    yay -S spotifyd spotify-tui
+echo -e "Welcome $USER@$HOSTNAME on $os!\n"
 
-    systemctl --user enable spotifyd.service &&
-    systemctl --user start spotifyd.service
-fi
+echo -e "\n${GREEN}Installing packages and OS specific configurations${NC}"
+os_specific
 
-exit 0
+echo -e "\n${GREEN}Installing home configurations files${NC}"
+home_config
+
+echo -e "\n${GREEN}Installing services${NC}"
+services
+
+echo -e "\n${GREEN}Installing PAM rules for u2f${NC}"
+u2f_config
+
+
