@@ -82,5 +82,3 @@ services
 
 echo -e "\n${GREEN}Installing PAM rules for u2f${NC}"
 u2f_config
-
-
