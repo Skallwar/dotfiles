@@ -16,6 +16,7 @@ return require('packer').startup(function()
   -- Code
   use 'neovim/nvim-lspconfig'
   -- use 'hrsh7th/nvim-cmp'
+  use 'ray-x/lsp_signature.nvim'
   use 'github/copilot.vim'
   use 'sheerun/vim-polyglot'
   use 'p00f/nvim-ts-rainbow'
@@ -29,4 +30,9 @@ return require('packer').startup(function()
   use 'tpope/vim-commentary'
   use 'vim-airline/vim-airline'
   use 'junegunn/fzf.vim'
+
+  -- Colorscheme
+  use 'EdenEast/nightfox.nvim'
+  use 'jacoborus/tender.vim'
+  use 'sainnhe/edge'
 end)
