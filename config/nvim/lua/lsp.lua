@@ -1,24 +1,5 @@
 require('nvim_utils')
 
-require "lsp_signature".setup({
-      bind = true,
-      handler_opts = {
-         border = "none"
-      },
-   })
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-   vim.lsp.diagnostic.on_publish_diagnostics, {
-      virtual_text = false,
-      sign = true,
-      update_in_insert = false,
-   }
-)
-
--- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
---   vim.lsp.handlers.hover, { focusable = false }
--- )
-
 -- Language server
 require'lspconfig'.clangd.setup{}
 require'lspconfig'.rust_analyzer.setup{}
@@ -45,13 +26,30 @@ require'lspconfig'.sumneko_lua.setup{
    },
 }
 
-      -- autocmd CursorHoldI,CursorMovedI * lua vim.lsp.buf.signature_help({focusable=false})
+-- UI
 vim.cmd [[
    augroup lsp
       autocmd!
-      autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})
+      autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float({focusable=false})
    augroup end
 ]]
+
+require "lsp_signature".setup({
+      bind = true,
+      hint_prefix = "",
+      handler_opts = {
+         border = "none"
+      },
+   })
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+   vim.lsp.diagnostic.on_publish_diagnostics, {
+      virtual_text = false,
+      sign = true,
+      update_in_insert = false,
+   }
+)
+
 
 -- Formating
 -- FIXME: This should be removed once https://github.com/neovim/neovim/pull/14661
@@ -98,30 +96,3 @@ nvim_create_augroups(autocmds)
 --    buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 --    buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 -- end
-
-
-
--- -- UI
--- vim.fn.sign_define('LspDiagnosticsSignError', { text = "✖", texthl = "LspDiagnosticsDefaultError" })
--- vim.fn.sign_define('LspDiagnosticsSignWarning', { text = "⚠", texthl = "LspDiagnosticsDefaultWarning" })
--- vim.fn.sign_define('LspDiagnosticsSignHint', { text = "~" })
-
--- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
---   vim.lsp.handlers.hover, { focusable = false }
--- )
-
--- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
---   vim.lsp.diagnostic.on_publish_diagnostics, {
---     virtual_text = false;
---     update_in_insert = false,
---   }
--- )
-
--- vim.cmd ([[
---    highlight LspDiagnosticsDefaultError guifg=Red, ctermfg=Red
---    highlight LspDiagnosticsDefaultHint guifg=#FFCC00 ctermfg=Yellow
---    highlight LspDiagnosticsDefaultWarning guifg=#FFCC00 ctermfg=Yellow
---    highlight NormalFloat ctermbg=234
--- ]])
-
-
