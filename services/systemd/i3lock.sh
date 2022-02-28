@@ -1,1 +1,1 @@
-../scripts/lock.sh
+../../scripts/lock.sh

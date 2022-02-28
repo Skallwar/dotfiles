@@ -1,1 +1,1 @@
-../scripts/lowbat-suspend.sh
+../../scripts/lowbat-suspend.sh
