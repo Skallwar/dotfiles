@@ -2,7 +2,15 @@ require('nvim_utils')
 
 -- Language server
 require'lspconfig'.clangd.setup{}
-require'lspconfig'.rust_analyzer.setup{}
+require'lspconfig'.rust_analyzer.setup{
+   settings = {
+      ["rust-analyzer"] = {
+         checkOnSave = {
+            extraArgs = { "--target-dir", "/tmp/rust-analyzer-check" }
+         }
+      }
+   }
+}
 require'lspconfig'.gopls.setup{}
 require'lspconfig'.als.setup{}
 require'lspconfig'.racket_langserver.setup{}
