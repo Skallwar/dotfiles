@@ -3,9 +3,6 @@ require('lsp')
 
 vim.opt.number = true
 vim.opt.colorcolumn = '80'
-vim.cmd([[
-   highlight ColorColumn ctermbg=darkgrey
-]])
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.list = true
@@ -18,10 +15,12 @@ vim.cmd([[
 ]])
 
 ---- Color and syntax
-vim.cmd('colorscheme edge')
-vim.g["edge_style"] = 'black'
-vim.t_Co = 256
-vim.base16colorspace=256
+vim.cmd([[
+   let g:edge_transparent_background = 1
+   set termguicolors
+   colorscheme edge
+   highlight ColorColumn ctermbg=darkgrey
+]])
 -- Treesitter
 require'nvim-treesitter.configs'.setup {
    highlight = {
