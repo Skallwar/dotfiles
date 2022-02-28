@@ -16,6 +16,9 @@ eval $(ssh-agent)
 # NetworkManager
 nm-applet &
 
+# Blueman
+blueman-applet &
+
 # Redshift
 redshift -l 48.84:2.35 -t 6500:3500 &
 
