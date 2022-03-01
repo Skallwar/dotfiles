@@ -20,7 +20,7 @@ nm-applet &
 blueman-applet &
 
 # Redshift
-redshift -l 48.84:2.35 -t 6500:3500 &
+redshift -l 48.84:2.35 -t 6500:3200 &
 
 # Dm
 exec i3
