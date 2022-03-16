@@ -64,7 +64,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 local autocmds = {
    todo = {
       {"BufWritePre", "*.rs", "lua", "vim.lsp.buf.formatting_sync(nil, 1000)"};
-      {"BufWritePre", "*.{c,cc,h,hh}", "lua", "vim.lsp.buf.formatting_sync(nil, 1000)"};
+      {"BufWritePre", "*.{c,cc,cpp,h,hh,hpp}", "lua", "vim.lsp.buf.formatting_sync(nil, 1000)"};
       {"BufWritePre", "*.go", "lua", "vim.lsp.buf.formatting_sync(nil, 1000)"};
       {"BufWritePre", "*.lua", "lua", "vim.lsp.buf.formatting_sync(nil, 1000)"};
    };
