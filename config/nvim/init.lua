@@ -12,6 +12,7 @@ vim.opt.wildmenu = true
 vim.cmd([[
    set path+=$PWD/**
 ]])
+vim.opt.grepprg = "rg --vimgrep --no-heading --smart-case"
 -- vim.opt.listchars = { trail = '.', tab = '>' }
 -- Fixme this is ugly
 vim.cmd([[
