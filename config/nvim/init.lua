@@ -8,6 +8,10 @@ vim.opt.smartindent = true
 vim.opt.list = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
+vim.opt.wildmenu = true
+vim.cmd([[
+   set path+=$PWD/**
+]])
 -- vim.opt.listchars = { trail = '.', tab = '>' }
 -- Fixme this is ugly
 vim.cmd([[
