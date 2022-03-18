@@ -31,6 +31,7 @@ return require('packer').startup(function()
   use 'vim-airline/vim-airline'
   use 'junegunn/fzf.vim'
   use 'junegunn/fzf'
+  use 'farmergreg/vim-lastplace'
 
   -- Colorscheme
   use 'EdenEast/nightfox.nvim'
