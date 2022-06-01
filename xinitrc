@@ -22,5 +22,8 @@ blueman-applet &
 # Redshift
 redshift -l 48.84:2.35 -t 6500:3200 &
 
+# Dunst
+dunst &
+
 # Dm
 exec i3
