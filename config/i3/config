@@ -30,7 +30,7 @@ exec --no-startup-id feh --recursive --randomize --bg-fill ~/.dotfiles/img/deskt
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
+set $refresh_i3status killall -SIGUSR1 i3status-rs
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
@@ -176,9 +176,24 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        mode hide
-        status_command i3status
+    mode hide
+    status_command i3status-rs ~/.config/i3/status.toml
+    font pango:Source Code Pro, FontAwesome 9
+    # position top
+    colors {
+        separator #666666
+        background #222222
+        statusline #dddddd
+        focused_workspace #0088CC #0088CC #ffffff
+        active_workspace #333333 #333333 #ffffff
+        inactive_workspace #333333 #333333 #888888
+        urgent_workspace #2f343a #ff8000 #ffffff
+    }
 }
+# bar {
+#         mode hide
+#         status_command i3status
+# }
 
 # No titlebars
 new_window pixel 2
