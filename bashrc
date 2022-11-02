@@ -27,18 +27,18 @@ export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
-#Export
+# Exports
 export PATH="${PATH}:$HOME/.cargo/bin:${HOME}/.local/bin"
 export EDITOR="nvim"
 
-#Don't use vim keybing
-#bindkey -e
-#bindkey "\e[3~" delete-char
+# GPG
+export GPG_TTY=$(tty)
 
 # Alias
 alias zshrc="vim $(readlink ~/.zshrc)"
 eval "$(thefuck --alias)"
 alias vim="nvim"
+alias svim="sudo -E nvim"
 alias bashrc="vim $(readlink ~/.bashrc)"
 alias vimrc="vim $(readlink ~/.vimrc)"
 alias ls="ls --color=auto"
