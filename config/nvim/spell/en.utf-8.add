@@ -19,3 +19,7 @@ pid
 blocksig
 sudo
 catched
+allocator
+GoOSe
+Qemu
+filesystem
