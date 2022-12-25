@@ -41,7 +41,7 @@ alias vim="nvim"
 alias svim="sudo -E nvim"
 alias bashrc="vim $(readlink ~/.bashrc)"
 alias vimrc="vim $(readlink ~/.vimrc)"
-alias ls="ls --color=auto"
+alias ls="ls -h --color=auto"
 alias tree="tree -C"
 alias lock="~/.dotfiles/lock.sh"
 alias listpkg='yay -Qet'
