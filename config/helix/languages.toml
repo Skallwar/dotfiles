@@ -1,0 +1,22 @@
+[[language]]
+name = "c"
+auto-format = true
+file-types = ["c"]#, "h"]
+indent = { tab-width = 8, unit = " " }
+formatter = { command = "clang-format" }
+
+[[language]]
+name = "cpp"
+auto-format = true
+formatter = { command = "clang-format" }
+
+[[language]]
+name = "make"
+file-types = ["in", "make"]
+
+[[language]]
+name = "rust"
+
+[language.config.checkOnSave]
+command = "clippy"
+extraArgs = ["--", "-W", "clippy::pedantic"]
