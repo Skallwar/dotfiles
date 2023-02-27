@@ -85,7 +85,7 @@ require 'lspconfig'.rust_analyzer.setup {
 require 'lspconfig'.gopls.setup {}
 require 'lspconfig'.als.setup {}
 require 'lspconfig'.racket_langserver.setup {}
-require 'lspconfig'.sumneko_lua.setup {
+require 'lspconfig'.lua_ls.setup {
    on_attach = lsp_attach,
 
    cmd = { "/bin/env", "lua-language-server" },
