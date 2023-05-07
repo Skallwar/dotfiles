@@ -16,6 +16,8 @@ file-types = ["in", "make"]
 
 [[language]]
 name = "rust"
+auto-format = true
+language-server = { command = "rust-analyzer" } #, args = ["--target-dir", "/tmp/rust-analyzer-check"] }
 
 [language.config.checkOnSave]
 command = "clippy"
