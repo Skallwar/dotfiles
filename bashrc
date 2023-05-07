@@ -48,5 +48,7 @@ alias lock="~/.dotfiles/lock.sh"
 alias listpkg='yay -Qet'
 alias suspend='systemctl suspend'
 alias hotspot='nmcli connection up Arch-USB || nmcli connection up Arch-PCI'
+alias watch='watch -c'
+alias less='less -R'
 # alias untar="tar -xvf "
 # alias untargz="tar -zxvf "
