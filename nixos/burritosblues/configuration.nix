@@ -150,19 +150,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     # CLI
-     alacritty neovim helix neofetch htop killall tree man-pages
-     nix-output-monitor
-     # GUI
-     arandr cinnamon.nemo pavucontrol yaru-theme flameshot xscreensaver
-     firefox chromium slack onlyoffice-bin signal-desktop xournalpp
-     lutris
-
-    # Vpn
-    globalprotect-openconnect
-
-     # Freetype
-     freetype_subpixel
+    slack
   ];
   environment.sessionVariables = rec {
     GTK_THEME = "Yaru";
@@ -177,43 +165,10 @@
     "L+ /lib64/ld-linux-x86-64.so.2 - - - - ${pkgs.glibc}/lib64/ld-linux-x86-64.so.2"
   ];
   
-  # Steam
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  };
-
-  # Fonts
-  ## Add freetype subpixel
-  nixpkgs.config.packageOverrides = pkgs: {
-    freetype_subpixel = pkgs.freetype.override {
-      useEncumberedCode = true;
-    };
-  };
-  # environment.systemPackages = [ pkgs.freetype_subpixel ];
-  environment.variables.LD_LIBRARY_PATH = [ "${pkgs.freetype_subpixel}/lib" ];
-  fonts = {
-    fontconfig.subpixel.rgba = "none"; # M27Q is BGR
-    fonts = with pkgs; [
-      noto-fonts-emoji
-      noto-fonts
-      font-awesome
-      source-code-pro
-    ];
-  };
-
-
-  # List services that you want to enable:
-
   # Media keys
   services.actkbd.enable = true;
   
-  # Fwupd
-  services.fwupd.enable = true;
-  services.udisks2.enable = true; # Error on fwupdmgr update otherwise
-  
-  # Polkit
+ # Polkit
   security.polkit.enable = true;
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {

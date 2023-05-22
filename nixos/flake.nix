@@ -2,9 +2,9 @@
   description = "An example NixOS configuration";
 
   inputs = {
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
     nixpkgs_unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs_custom.url = "path:/home/esteban/dev/nixpkgs";
+    nixpkgs_wayland.url = "github:nix-community/nixpkgs-wayland";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     deploy-rs.url = "github:serokell/deploy-rs";
     sops-nix.url = github:Mic92/sops-nix;
@@ -12,9 +12,9 @@
 
   outputs = {
     self,
-    # nixpkgs,
+    nixpkgs,
     nixpkgs_unstable,
-    nixpkgs_custom,
+    nixpkgs_wayland,
     nixos-hardware,
     deploy-rs,
     sops-nix,
@@ -32,11 +32,39 @@
           nixos-hardware.nixosModules.lenovo-thinkpad-t14s
           sops-nix.nixosModules.sops
           ./burritosblues/configuration.nix
+          ./base.nix
+          ./nix.nix
+          ./desktop_apps.nix
+          ./sound.nix
+          ./fonts.nix
           ./yubikey-gpg.nix
           ./keychron.nix
           ./redshift.nix
           ./docker.nix
           ./vm.nix
+          ./steam.nix
+        ];
+      };
+
+      gusto = nixpkgs_unstable.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./gusto/configuration.nix
+          ./base.nix
+          ./nix.nix
+          ./desktop_apps.nix
+          ./nvidia.nix
+          ./g27q.nix
+          ./sway.nix
+          ./fonts.nix
+          ./sound.nix
+          ./yubikey-gpg.nix
+          ./keychron.nix
+          ./redshift.nix
+          ./steam.nix
+          {
+            nixpkgs.overlays = [ nixpkgs_wayland.overlay ];
+          }
         ];
       };
 
