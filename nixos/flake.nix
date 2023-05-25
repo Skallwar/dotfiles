@@ -42,6 +42,7 @@
           ./redshift.nix
           ./docker.nix
           ./vm.nix
+          ./vikunja.nix
           ./steam.nix
         ];
       };

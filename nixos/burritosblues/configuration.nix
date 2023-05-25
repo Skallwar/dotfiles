@@ -36,6 +36,7 @@
   # Enable networking
   networking.hostName = "burritosblues"; # Define your hostname.
   networking.networkmanager.enable = true;
+  systemd.services.NetworkManager-wait-online.enable = false;
   programs.nm-applet.enable = true;
   system.activationScripts = {
     rfkillUnblockWlan = {
@@ -49,11 +50,11 @@
   # Set your time zone.
   time.timeZone = "Europe/Paris";
 
-  # Audio
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.support32Bit = true; ## For 32-bit app support
-  nixpkgs.config.pulseaudio = true;
+  # # Audio
+  # sound.enable = true;
+  # hardware.pulseaudio.enable = true;
+  # hardware.pulseaudio.support32Bit = true; ## For 32-bit app support
+  # nixpkgs.config.pulseaudio = true;
   
   # Bluetooth
   hardware.bluetooth.enable = true;
@@ -190,8 +191,8 @@
   services.thinkfan = {
     enable = true; 
     levels = [
-      [0 0 50]
-      ["level auto" 50 80]
+      [0 0 70]
+      ["level auto" 70 80]
       ["level full-speed" 80 255]
     ];
   };
@@ -250,7 +251,7 @@
     '';
   };
   services.tlp = {
-    enable = false;
+    enable = true;
     settings = {
       # CPU_BOOST_ON_BAT = 0;
       CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
@@ -267,15 +268,16 @@
   };
   
   # Laptop battery  
-  systemd.user.timers.suspend-on-low-battery = {
+  systemd.timers.suspend-on-low-battery = {
     description = "Suspend on low battery";
+    wantedBy = [ "timers.target" ];
+    partOf = ["suspend-on-low-battery.service"];
     timerConfig = {
       OnUnitActiveSec = "2m";
-      OnBootSec= "2m";
+      OnBootSec= "30s";
     };
-    wantedBy = [ "multi-user.target" "timer.target" ];
   };
-  systemd.user.services.suspend-on-low-battery = let
+  systemd.services.suspend-on-low-battery = let
     battery-level-sufficient = pkgs.writeShellScriptBin
       "battery-level-sufficient" ''
       if [[ "$(cat /sys/class/power_supply/BAT0/status)" != Discharging ]]; then

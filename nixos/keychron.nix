@@ -3,7 +3,7 @@
 {
   services.udev = {
     extraRules = ''
-      SUBSYSTEMS=="input", ACTION=="add", ATTR{name}=="Keychron Keychron K6", TAG+="systemd", ENV{SYSTEMD_USER_WANTS}+="setup-keychron.service", RUN+="${pkgs.stdenv.shell} -c 'echo 1 | tee /sys/module/hid_apple/parameters/swap_opt_cmd'"
+      SUBSYSTEMS=="input", ACTION=="add", ATTR{name}=="*Keychron K6*", TAG+="systemd", ENV{SYSTEMD_USER_WANTS}+="setup-keychron.service", RUN+="${pkgs.stdenv.shell} -c 'echo 1 | tee /sys/module/hid_apple/parameters/swap_opt_cmd'"
     '';
   };
 
