@@ -10,7 +10,6 @@
       ./hardware-configuration.nix
       ./wireguard.nix
       ./autorandr.nix
-      ./ti-vpn.nix
       ./syncthing.nix
     ];
 
@@ -29,6 +28,9 @@
   boot.initrd.secrets = {
     "/crypto_keyfile.bin" = null;
   };
+
+  # NTFS
+  boot.supportedFilesystems = [ "ntfs" ];
 
   # Cross compile
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
@@ -50,12 +52,6 @@
   # Set your time zone.
   time.timeZone = "Europe/Paris";
 
-  # # Audio
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
-  # hardware.pulseaudio.support32Bit = true; ## For 32-bit app support
-  # nixpkgs.config.pulseaudio = true;
-  
   # Bluetooth
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
@@ -63,40 +59,46 @@
   # Hardware accel
   hardware.opengl = {
     enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
     extraPackages = with pkgs; [
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
       vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
       vaapiVdpau
       libvdpau-va-gl
+      intel-compute-runtime
+      # intel-ocl
     ];
+    # extraPackages32 = with pkgs.pkgsi686Linux; [ intel-media-driver vaapiIntel vaapiVdpau ];
   };
-  hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiIntel ];
   
   # Fingerprint
   # services.fprintd.enable = true;
   
   # Printing
   services.printing.enable = true;
+  services.printing.drivers = with pkgs; [
+    hplipWithPlugin
+  ];
   services.avahi.enable = true;
   # Important to resolve .local domains of printers, otherwise you get an error
   # like  "Impossible to connect to XXX.local: Name or service not known"
   services.avahi.nssmdns = true;
 
-
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.utf8";
+  i18n.defaultLocale = "en_US.UTF-8";
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "fr_FR.utf8";
-    LC_IDENTIFICATION = "fr_FR.utf8";
-    LC_MEASUREMENT = "fr_FR.utf8";
-    LC_MONETARY = "fr_FR.utf8";
-    LC_NAME = "fr_FR.utf8";
-    LC_NUMERIC = "fr_FR.utf8";
-    LC_PAPER = "fr_FR.utf8";
-    LC_TELEPHONE = "fr_FR.utf8";
-    LC_TIME = "fr_FR.utf8";
-  };
+  # i18n.extraLocaleSettings = {
+  #   LC_ADDRESS = "fr_FR.utf8";
+  #   LC_IDENTIFICATION = "fr_FR.utf8";
+  #   LC_MEASUREMENT = "fr_FR.utf8";
+  #   LC_MONETARY = "fr_FR.utf8";
+  #   LC_NAME = "fr_FR.utf8";
+  #   LC_NUMERIC = "fr_FR.utf8";
+  #   LC_PAPER = "fr_FR.utf8";
+  #   LC_TELEPHONE = "fr_FR.utf8";
+  #   LC_TIME = "fr_FR.utf8";
+  # };
 
   # Configure keymap in X11
   services.xserver = {
@@ -115,6 +117,7 @@
       	[org.gnome.desktop.interface]
       	gtk-theme='Yaru'
       '';
+      runXdgAutostartIfNone = true;
     };
 
     displayManager.lightdm = {
@@ -140,7 +143,7 @@
   users.users.esteban = {
     isNormalUser = true;
     description = "Esteban";
-    extraGroups = [ "networkmanager" "wheel" "audio" "sound" "dialout" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "sound" "dialout" "netboot" ];
     packages = with pkgs; [];
   };
 
@@ -150,9 +153,6 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    slack
-  ];
   environment.sessionVariables = rec {
     GTK_THEME = "Yaru";
   };
@@ -165,10 +165,10 @@
   systemd.tmpfiles.rules = [
     "L+ /lib64/ld-linux-x86-64.so.2 - - - - ${pkgs.glibc}/lib64/ld-linux-x86-64.so.2"
   ];
-  
+
   # Media keys
   services.actkbd.enable = true;
-  
+
  # Polkit
   security.polkit.enable = true;
   systemd = {
@@ -186,14 +186,17 @@
       };
     };
   };
-  
+
+  # Sudo
+  security.sudo.extraConfig = "Defaults !tty_tickets";
+
   # Laptop performance
   services.thinkfan = {
     enable = true; 
     levels = [
-      [0 0 70]
-      ["level auto" 70 80]
-      ["level full-speed" 80 255]
+      [0 0 80]
+      ["level auto" 80 90]
+      ["level full-speed" 90 255]
     ];
   };
   services.throttled = {
@@ -268,7 +271,7 @@
   };
   
   # Laptop battery  
-  systemd.timers.suspend-on-low-battery = {
+  systemd.user.timers.suspend-on-low-battery = {
     description = "Suspend on low battery";
     wantedBy = [ "timers.target" ];
     partOf = ["suspend-on-low-battery.service"];
@@ -277,22 +280,22 @@
       OnBootSec= "30s";
     };
   };
-  systemd.services.suspend-on-low-battery = let
+  systemd.user.services.suspend-on-low-battery = let
     battery-level-sufficient = pkgs.writeShellScriptBin
       "battery-level-sufficient" ''
       if [[ "$(cat /sys/class/power_supply/BAT0/status)" != Discharging ]]; then
         exit 0
       elif [[ "$(cat /sys/class/power_supply/BAT0/capacity)" -le 5 ]]; then
-        ${pkgs.libnotify}/bin/notify-send --urgency=critical --hint=int:transient:1 --icon=battery_empty "Battery empty, shutting down in 60 seconds"
-        sleep 60
+        ${pkgs.libnotify}/bin/notify-send --urgency=critical --hint=int:transient:1 --icon=battery_empty "Battery empty, shutting down in 2 minutes"
+        sleep 120
         # Check if the user pluged the charger
         if [[ "$(cat /sys/class/power_supply/BAT0/status)" != Discharging ]]; then
-        ${pkgs.libnotify}/bin/notify-send --urgency=low --hint=int:transient:1 -t 5 "Battery charging, disabling auto sleep"
+        ${pkgs.libnotify}/bin/notify-send --urgency=normal --hint=int:transient:1 -t 5000 "Battery charging, disabling auto sleep"
           exit 0
         fi
         exit 1
       elif [[ "$(cat /sys/class/power_supply/BAT0/capacity)" -le 10 ]]; then
-        ${pkgs.libnotify}/bin/notify-send --urgency=normal --hint=int:transient:1 --icon=battery_empty -t 5 "Battery Low"
+        ${pkgs.libnotify}/bin/notify-send --urgency=normal --hint=int:transient:1 --icon=battery_empty -t 5000 "Battery Low"
         exit 0
       fi
     '';
@@ -311,7 +314,7 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = false;
 
   # Nix
   nix.settings.auto-optimise-store = true;

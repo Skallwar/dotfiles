@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./cli.nix ];
+  imports = [ ./cli.nix ./flatpak.nix ];
 
   environment.systemPackages = with pkgs; [
     alacritty neofetch arandr cinnamon.nemo pavucontrol yaru-theme flameshot xscreensaver
