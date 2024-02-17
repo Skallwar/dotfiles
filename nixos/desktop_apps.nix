@@ -1,15 +1,17 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    # CLI
-    alacritty neovim helix neofetch htop killall tree man-pages ncdu
-    nix-output-monitor
-    amdctl
+  imports = [ ./cli.nix ];
 
-    # GUI
-    arandr cinnamon.nemo pavucontrol yaru-theme flameshot xscreensaver
-    firefox chromium  onlyoffice-bin signal-desktop xournalpp
-    gparted
+  environment.systemPackages = with pkgs; [
+    alacritty neofetch arandr cinnamon.nemo pavucontrol yaru-theme flameshot xscreensaver
+    firefox chromium signal-desktop xournalpp vlc
+    gparted android-file-transfer
+    networkmanagerapplet
+    peazip
+
+    # Office
+    libreoffice onlyoffice-bin
+    hunspell hunspellDicts.en_US hunspellDicts.fr-any
   ];
 }

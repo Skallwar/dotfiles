@@ -4,6 +4,7 @@
   boot.extraModprobeConfig = "options kvm_intel nested=1";
 
   virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
   # virtualisation.virtualbox.host.enable = true;
   # virtualisation.virtualbox.host.enableExtensionPack = true;
 

@@ -2,8 +2,8 @@
   description = "An example NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
-    nixpkgs_unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs_unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs_wayland.url = "github:nix-community/nixpkgs-wayland";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     deploy-rs.url = "github:serokell/deploy-rs";

@@ -9,7 +9,8 @@
   environment.systemPackages = [ pkgs.freetype_subpixel ];
   environment.variables.LD_LIBRARY_PATH = [ "${pkgs.freetype_subpixel}/lib" ];
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
+      nerdfonts
       noto-fonts-emoji
       noto-fonts
       font-awesome
