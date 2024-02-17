@@ -18,15 +18,9 @@
     nixos-hardware,
     deploy-rs,
     sops-nix,
-  } @ inputs:
-  let 
-    unstable-overlay = final: prev: {
-      syncthing = nixpkgs_unstable.legacyPackages.aarch64-linux.syncthing;
-      autorandr = nixpkgs_unstable.legacyPackages.x86_64-linux.autorandr;
-    };
-  in {
+  } @ inputs : rec {
     nixosConfigurations = {
-      burritosblues = nixpkgs_unstable.lib.nixosSystem {
+      burritosblues = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           nixos-hardware.nixosModules.lenovo-thinkpad-t14s
@@ -39,11 +33,13 @@
           ./fonts.nix
           ./yubikey-gpg.nix
           ./keychron.nix
-          ./redshift.nix
+          #./redshift.nix
           ./docker.nix
           ./vm.nix
-          ./vikunja.nix
           ./steam.nix
+          ./dev.nix
+          ./boards.nix
+          # ./d6000.nix
         ];
       };
 
@@ -63,29 +59,45 @@
           ./keychron.nix
           ./redshift.nix
           ./steam.nix
+          ./dev.nix
           {
             nixpkgs.overlays = [ nixpkgs_wayland.overlay ];
           }
         ];
       };
 
-      nixpi = nixpkgs_unstable.lib.nixosSystem {
+      nixpi = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
-        disabledModules = ["nixos/modules/services/hardware/throttled.nix"];
+        specialArgs.flake-inputs = inputs;
         modules = [
-          ({ config, pkgs, ...}: { nixpkgs.overlays = [ unstable-overlay ]; })
+          ({ config, pkgs, ...}: {
+            nixpkgs.overlays = [ 
+              (final: super: {
+                zfs = super.zfs.overrideAttrs(_: {
+                meta.platforms = [];
+                });
+              })
+            ]; 
+            nixpkgs.config.allowBroken = true;
+          })
           nixos-hardware.nixosModules.raspberry-pi-4
-          # nixpkgs_custom.nixos.modules.services.hardware.throttled
+          "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64-new-kernel.nix"
           sops-nix.nixosModules.sops
           ./nixpi/configuration.nix
-          # ./aarch64_cross.nix
-          # {
-          #   nixpkgs.buildPlatform.system = "x86_64-linux";
-          #   nixpkgs.hostPlatform.system = "aarch64-linux";
-          # }
+          ./home_assitant.nix
+          ./vikunja.nix
+          ./cli.nix
+          {
+            # nixpkgs.buildPlatform.system = "x86_64-linux";
+            # nixpkgs.buildPlatform.system = "aarch64-linux";
+            # nixpkgs.hostPlatform.system = "aarch64-linux";
+            environment.noXlibs = false;
+          }
         ];
       };
     };
+
+    images.nixpi = nixosConfigurations.nixpi.config.system.build.sdImage;
 
     deploy.nodes = {
       burritosblues = {
