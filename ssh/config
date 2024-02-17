@@ -1,3 +1,5 @@
+Include config.d/*.config
+
 Host *
         IgnoreUnknown UseKeychain
         UseKeychain yes
