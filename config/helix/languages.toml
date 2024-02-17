@@ -1,9 +1,9 @@
 [[language]]
 name = "c"
-auto-format = true
-file-types = ["c"]#, "h"]
+file-types = ["c", "h"]
 indent = { tab-width = 8, unit = " " }
-formatter = { command = "clang-format" }
+# auto-format = true
+# formatter = { command = "clang-format" }
 
 [[language]]
 name = "cpp"
