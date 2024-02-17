@@ -1,69 +1,21 @@
-require('plugins')
-require('lsp')
+require "core"
 
-vim.opt.number = true
-vim.opt.colorcolumn = '80'
-vim.opt.autoindent = true
-vim.opt.smartindent = true
-vim.opt.list = true
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.wildmenu = true
-vim.cmd([[
-   set path+=$PWD/**
-]])
-vim.opt.grepprg = "rg --vimgrep --no-heading --smart-case"
--- vim.opt.listchars = { trail = '.', tab = '>' }
--- Fixme this is ugly
-vim.cmd([[
-   set listchars=trail:.,tab:>\ ,
-]])
+local custom_init_path = vim.api.nvim_get_runtime_file("lua/custom/init.lua", false)[1]
 
----- Color and syntax
-vim.cmd([[
-   let g:edge_transparent_background = 1
-   set termguicolors
-   colorscheme edge
-   highlight ColorColumn ctermbg=darkgrey
-]])
--- Treesitter
-require'nvim-treesitter.configs'.setup {
-   highlight = {
-      enable = true
-   },
+if custom_init_path then
+  dofile(custom_init_path)
+end
 
-   ensure_installed = {
-      "c",
-      "rust",
-      "go",
-      "lua",
-      "toml",
-      "python",
-   },
+require("core.utils").load_mappings()
 
-   indent = {
-      enable = false --true
-   },
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
-   additional_vim_regex_highlighting = false,
+-- bootstrap lazy.nvim!
+if not vim.loop.fs_stat(lazypath) then
+  require("core.bootstrap").gen_chadrc_template()
+  require("core.bootstrap").lazy(lazypath)
+end
 
-   rainbow = {
-      enable = true,
-      extended_mode = false, -- Also highlight non-bracket delimiters
-      max_file_lines = nil, -- Do not enable for files with more than n lines, int
-      -- colors = {}, -- table of hex strings
-      -- termcolors = {} -- table of colour name strings
-   }
-}
--- Polyglot
-vim.g["polyglot_disabled"] = { "ada" }
-----
-
----- Keybindings
--- Fzf
-vim.api.nvim_set_keymap('n', 'f', ':Files<CR>', { noremap = true, silent = true })
-----
-
----- Copilot
-vim.g["copilot_enabled"] = false
-
+dofile(vim.g.base46_cache .. "defaults")
+vim.opt.rtp:prepend(lazypath)
+require "plugins"
