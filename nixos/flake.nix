@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs_unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs_wayland.url = "github:nix-community/nixpkgs-wayland";
+    # nixpkgs_wayland.url = "github:nix-community/nixpkgs-wayland/f3206bcb1f2eb6b36e60cba2640fc1897f3d2f3d";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     deploy-rs.url = "github:serokell/deploy-rs";
     sops-nix.url = github:Mic92/sops-nix;
@@ -14,7 +14,7 @@
     self,
     nixpkgs,
     nixpkgs_unstable,
-    nixpkgs_wayland,
+    # nixpkgs_wayland,
     nixos-hardware,
     deploy-rs,
     sops-nix,
@@ -28,6 +28,7 @@
           ./burritosblues/configuration.nix
           ./base.nix
           ./nix.nix
+          ./i3.nix
           ./desktop_apps.nix
           ./sound.nix
           ./fonts.nix
@@ -43,16 +44,17 @@
         ];
       };
 
-      gusto = nixpkgs_unstable.lib.nixosSystem {
+      gusto = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./gusto/configuration.nix
           ./base.nix
           ./nix.nix
+          ./i3.nix
           ./desktop_apps.nix
           ./nvidia.nix
           ./g27q.nix
-          ./sway.nix
+          # ./sway.nix
           ./fonts.nix
           ./sound.nix
           ./yubikey-gpg.nix
@@ -61,7 +63,7 @@
           ./steam.nix
           ./dev.nix
           {
-            nixpkgs.overlays = [ nixpkgs_wayland.overlay ];
+            # nixpkgs.overlays = [ nixpkgs_wayland.overlay ];
           }
         ];
       };
@@ -88,9 +90,6 @@
           ./vikunja.nix
           ./cli.nix
           {
-            # nixpkgs.buildPlatform.system = "x86_64-linux";
-            # nixpkgs.buildPlatform.system = "aarch64-linux";
-            # nixpkgs.hostPlatform.system = "aarch64-linux";
             environment.noXlibs = false;
           }
         ];

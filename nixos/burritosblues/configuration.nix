@@ -103,40 +103,8 @@
   # Configure keymap in X11
   services.xserver = {
     enable = true;
-    
+
     videoDrivers = [ "modesetting" ];
-
-    layout = "us";
-    xkbVariant = "";
-    xkbOptions = "caps:escape";
-    libinput.enable = true;
-
-    desktopManager = {
-      xterm.enable = false;
-      gnome.extraGSettingsOverrides = ''
-      	[org.gnome.desktop.interface]
-      	gtk-theme='Yaru'
-      '';
-      runXdgAutostartIfNone = true;
-    };
-
-    displayManager.lightdm = {
-      enable = true;
-      greeters.slick = {
-        enable = true;
-        theme.name = "Yaru";
-      };
-    };
-
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        dmenu
-        i3status-rust
-        i3lock-color
-        dunst
-      ];
-    };
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

@@ -1,5 +1,4 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
+# Edit this configuration file to define what should be installed on your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
@@ -26,25 +25,29 @@
   boot.initrd.secrets = {
     "/crypto_keyfile.bin" = null;
   };
-  
+
   # Mount disks
   fileSystems = {
+    "/game-hdd" = {
+      device = "/dev/disk/by-uuid/726A5F3A6A5EFA75";
+      fsType = "ntfs";
+      options = [ "uid=1000" "gid=100" "rw" "user" "exec" "umask=000" ];
+    };
     "/game-ssd" = {
       device = "/dev/disk/by-uuid/1376F8B75D4ED355";
       fsType = "ntfs";
       options = [ "uid=1000" "gid=100" "rw" "user" "exec" "umask=000" ];
     };
-  };
-  
-  # services.thermald.enable = true;
-  # hardware.fancontrol = {
-  #   enable = true;
-  #   config = ''
-  #     INTERVAL=10
-  #   '';
-  # };
 
-   # Polkit
+  };
+
+  powerManagement = {
+    enable = true;
+    cpuFreqGovernor = "ondemand";
+  #   cpufreq.min = 10000;
+  };
+
+  # Polkit
   security.polkit.enable = true;
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {
@@ -61,7 +64,6 @@
       };
     };
   };
-  
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -84,55 +86,6 @@
     LC_TELEPHONE = "fr_FR.UTF-8";
     LC_TIME = "fr_FR.UTF-8";
   };
-
-  services.xserver = {
-    enable = true;
-    
-    layout = "us";
-    xkbVariant = "";
-    xkbOptions = "caps:escape";
-    
-    
-    libinput = {
-      enable = true;
-
-      mouse = {
-        accelProfile = "flat";
-      };
-    };
-
-    desktopManager = {
-      xterm.enable = false;
-      gnome.extraGSettingsOverrides = ''
-      	[org.gnome.desktop.interface]
-      	gtk-theme='Yaru'
-      '';
-    };
-
-    # displayManager.lightdm = {
-    #   enable = true;
-    #   greeters.slick = {
-    #     enable = true;
-    #     theme.name = "Yaru";
-    #   };
-    # };
-
-    # windowManager.i3 = {
-    #   enable = true;
-    #   extraPackages = with pkgs; [
-    #     dmenu
-    #     i3status-rust
-    #     i3lock-color
-    #     dunst
-    #   ];
-    # };
-  };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.esteban = {
@@ -162,7 +115,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
