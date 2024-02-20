@@ -8,9 +8,8 @@
   };
   
   environment.systemPackages = with pkgs; [
-    wineWowPackages.waylandFull
     lutris
   ];
-  
+
   hardware.opengl.driSupport32Bit = true;
 }
