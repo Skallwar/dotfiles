@@ -14,4 +14,7 @@
     libreoffice onlyoffice-bin
     hunspell hunspellDicts.en_US hunspellDicts.fr-any
   ];
+
+  # In a DE there is a good chance I will try an download a binary at some point...
+  programs.nix-ld.enable = true;
 }
