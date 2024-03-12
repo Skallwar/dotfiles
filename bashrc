@@ -54,7 +54,8 @@ alias ls="ls -h --color=auto"
 alias tree="tree -C"
 alias lock="~/.dotfiles/lock.sh"
 alias listpkg='yay -Qet'
-alias suspend='systemctl suspend'
+alias host_suspend='distrobox-host-exec systemctl suspend'
+alias suspend='systemctl suspend || host_suspend'
 alias hotspot='nmcli connection up Arch-USB || nmcli connection up Arch-PCI'
 alias watch='watch -c'
 alias less='less -R'
