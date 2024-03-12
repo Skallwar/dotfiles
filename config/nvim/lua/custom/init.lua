@@ -27,7 +27,7 @@ vim.opt.iskeyword:remove('_')
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = {"c", "cpp"},
-	command = "setlocal colorcolumn=81 | setlocal noexpandtab ts=8 sw=8 sts=0",
+	command = "setlocal colorcolumn=100 | setlocal noexpandtab ts=8 sw=8 sts=0",
 })
 
 vim.api.nvim_create_autocmd("FileType", {
