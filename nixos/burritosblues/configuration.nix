@@ -53,7 +53,10 @@
   time.timeZone = "Europe/Paris";
 
   # Bluetooth
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
+  };
   services.blueman.enable = true;
   
   # Hardware accel
