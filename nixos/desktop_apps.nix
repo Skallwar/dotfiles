@@ -4,7 +4,7 @@
   imports = [ ./cli.nix ./flatpak.nix ];
 
   environment.systemPackages = with pkgs; [
-    alacritty neofetch arandr cinnamon.nemo pavucontrol yaru-theme flameshot xscreensaver
+    unstable.alacritty neofetch arandr cinnamon.nemo pavucontrol yaru-theme flameshot xscreensaver
     firefox chromium signal-desktop xournalpp vlc
     gparted android-file-transfer
     networkmanagerapplet
