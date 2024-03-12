@@ -7,4 +7,11 @@
     bash starship
     nix-output-monitor
   ];
+
+  environment.shellAliases = {
+    vim="nvim";
+    svim="sudo -E nvim";
+    ls="ls -h --color=auto";
+    tree="tree -C";
+  };
 }
