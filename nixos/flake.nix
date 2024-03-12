@@ -3,8 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
-    nixpkgs_unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    # nixpkgs_wayland.url = "github:nix-community/nixpkgs-wayland/f3206bcb1f2eb6b36e60cba2640fc1897f3d2f3d";
+    nixpkgs_unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     deploy-rs.url = "github:serokell/deploy-rs";
     sops-nix.url = github:Mic92/sops-nix;
@@ -22,7 +21,11 @@
     nixosConfigurations = {
       burritosblues = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
         modules = [
+          # For having access to nixpkgs_unstable
+          { _module.args = inputs; }
+          ./unstable.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-t14s
           sops-nix.nixosModules.sops
           ./burritosblues/configuration.nix
@@ -47,6 +50,8 @@
       gusto = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          { _module.args = inputs; }
+          ./unstable.nix
           ./gusto/configuration.nix
           ./base.nix
           ./nix.nix
