@@ -30,7 +30,6 @@
           sops-nix.nixosModules.sops
           ./burritosblues/configuration.nix
           ./base.nix
-          ./nix.nix
           ./i3.nix
           ./desktop_apps.nix
           ./sound.nix
@@ -54,7 +53,6 @@
           ./unstable.nix
           ./gusto/configuration.nix
           ./base.nix
-          ./nix.nix
           ./i3.nix
           ./desktop_apps.nix
           ./nvidia.nix
@@ -90,6 +88,7 @@
           nixos-hardware.nixosModules.raspberry-pi-4
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64-new-kernel.nix"
           sops-nix.nixosModules.sops
+          ./base.nix
           ./nixpi/configuration.nix
           ./home_assitant.nix
           ./vikunja.nix
