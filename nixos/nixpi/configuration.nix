@@ -19,6 +19,8 @@
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   # Filesystems
   boot.supportedFilesystems = [ "ntfs" ];
+  # Enable ssh recovery
+  boot.initrd.network.ssh.enable = true;
   
   # PowerManagement
   powerManagement = {
@@ -71,7 +73,7 @@
     hashedPassword = "$y$j9T$WoJd3DErDyhn2wtwlObXM/$n/CgQv67jhvt8kylQ7UgA0Ifpi5qqRUbArEkkMwxj50";
     openssh.authorizedKeys.keys = [
       "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCyWXFuqSw+JLEnVp13ea+uWXuUHOaR+/g5pmyiWrDl3lWETxRJpzkUu6cIVERtdQDFRZpwlWFo/sD2K2whHjO1ynzuKEM3OupGAe8tEaxcI6FiqH8rYyNNus1eW9qZ9SQCLYLtCI7Yfk0muilTk0l6qolczkwzNVi9IQCCM6ZIRN1bQFSaxQ7If51nnfTqXkkvkunt2ccibZZ4am1SHpnA5o8DIobRYEyniVpcT+yhmP0UCjxfxH+6UvjgHJDq8bqhir6TojVQprkBFEDNPq+Lr8LY2uM0UpfobqlvoNZy8kXqGT8xcHyVkRHfvPXbUyU1ze8ZphTXV+is0SgS1cNUWP0d5oQHfjJK3YjWkTSo/iztUCMT6FvdHDxvVqXVQ1GX9VcYXXIgeh5cZ5XxAxbgsVNJ+R/pAuHomb8PnPQ+MV+4lXYz0zBGhOhgUDZzJ3HZYwcAOTVTfFnGlIZwEJ6u6oXM/OS9ga+zD6nt6tyfzxyHtJxzueo+7U2OnBRbP3JKnEEkyYoIdqwOyJzdXexqmRS85XsEUxmgmPjPd3ewwiLsU8SVkaVZuzVtRQXl+ndNPnQHEP3Uvo5gN5HHUaFrR9etI5pmGLzoK7EE3DCEKz7Svga1C0ZpiLxCCTBeVHzZsa7lplp+jDP8Xno0zbM6CqqzkaW6+6twZ5CrdsvynQ== openpgp:0x60AC42D3"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMlz4K7iCvJSht6B7SolU+1J3rAMJ/1pX+OhrAQwVq+N esteban@nixos"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMlz4K7iCvJSht6B7SolU+1J3rAMJ/1pX+OhrAQwVq+N esteban@burritosblues"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILNPVIBLk/AOyflGnWK9GsN4mauL93smUd6YqgvvMEIr redmi10"
     ];
     extraGroups = [ "networkmanager" "wheel" "audio" "dialout" ];
@@ -95,7 +97,11 @@
 
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings.PasswordAuthentication = false;
+  };
+  security.pam.enableSSHAgentAuth = true;
 
   # Nix
   nix.settings.auto-optimise-store = true;
