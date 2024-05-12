@@ -16,9 +16,14 @@ local plugins = {
   },
   {
     "nvim-treesitter/nvim-treesitter",
+    event = { "BufReadPost", "BufWritePost", "BufNewFile" },
     opts = {
       ensure_installed = {"c", "rust", "cpp", "lua", "python", "toml", "nix", "perl", "ruby", "html", "css", "bash", "devicetree"},
     },
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    event = { "BufReadPost", "BufWritePost", "BufNewFile" },
   },
   {
     "nvim-tree/nvim-tree.lua",
@@ -28,9 +33,14 @@ local plugins = {
     end,
   },
 
-  { "tpope/vim-fugitive", lazy = false },
-  { 
-    "Deedone/checkpatch.nvim", lazy = false,
+  {
+    "tpope/vim-fugitive",
+    cmd = { "G", "Git" },
+  },
+
+  {
+    "Deedone/checkpatch.nvim",
+    cmd = { "CheckpatchEnable", "CheckpatchDisable"},
     config = function()
       require "custom.configs.checkpatch"
     end
@@ -45,7 +55,7 @@ local plugins = {
   -- LLM stuff
   {
     "David-Kunz/gen.nvim",
-    lazy = false,
+    cmd = "Gen",
     opts = {
       model = "codellama:7b",
       display_mode = "split",
