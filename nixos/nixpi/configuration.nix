@@ -15,13 +15,14 @@
       ./syncthing.nix
       ./sops.nix
     ];
-  
+
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   # Filesystems
   boot.supportedFilesystems = [ "ntfs" ];
   # Enable ssh recovery
   boot.initrd.network.ssh.enable = true;
-  
+  systemd.watchdog.runtimeTime = "60s";
+
   # PowerManagement
   powerManagement = {
     enable = true;
@@ -41,7 +42,7 @@
   #     deps = [];
   #   };
   # };
-  
+
   fileSystems."/data" = {
     device = "/dev/disk/by-label/NEXTCLOUD";
     fsType = "ext4";

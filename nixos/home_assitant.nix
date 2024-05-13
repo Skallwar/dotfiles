@@ -19,6 +19,9 @@
       # "google_maps"
       "cast"
     ];
+    extraPackages = python3Packages: with python3Packages; [
+      gtts
+    ];
     config = {
       # Includes dependencies for a basic setup
       # https://www.home-assistant.io/integrations/default_config/
@@ -90,6 +93,7 @@
       mqtt = {
         server = "mqtt://localhost:1883";
         user = "zigbee2mqtt";
+        password = "!secret.yaml";
       };
       frontend = {
         port = 8842;
