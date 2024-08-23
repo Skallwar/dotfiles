@@ -1,7 +1,7 @@
 local configs = require("plugins.configs.lspconfig")
 local on_attach = configs.on_attach
 local capabilities = configs.capabilities
-capabilities.offsetEncoding = "utf-8"
+-- capabilities.offsetEncoding = "utf-8"
 
 local lspconfig = require "lspconfig"
 local servers = { "clangd", "rust_analyzer", "lua_ls", "nixd", "pylyzer", "ruff_lsp" }
@@ -20,6 +20,7 @@ local settings = {
 }
 
 lspconfig.clangd.cmd = { "clangd", "--clang-tidy", "--offset-encoding=utf-16" }
+
 -- lspconfig.lua_ls.settings.Lua.diagnostics.globals = { "vim" }
 
 for _, lsp in ipairs(servers) do
