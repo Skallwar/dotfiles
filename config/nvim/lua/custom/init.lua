@@ -17,7 +17,7 @@ vim.opt.listchars.tab = '>·'
 vim.opt.clipboard = "unnamedplus"
 
 -- Indentation settings
-vim.g.colorcolumn = 81
+vim.g.colorcolumn = 80
 vim.g.sts = 0
 vim.g.noexpandtab = true
 vim.g.tabstop = 8
@@ -26,13 +26,13 @@ vim.g.c_syntax_for_h = true
 vim.opt.iskeyword:remove('_')
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = {"c", "cpp"},
-	command = "setlocal colorcolumn=100 | setlocal noexpandtab ts=8 sw=8 sts=0",
+	pattern = {"c"},
+	command = "setlocal colorcolumn=80 | setlocal noexpandtab ts=8 sw=8 sts=0",
 })
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "gitcommit",
-	command = "setlocal colorcolumn=81",
+	command = "setlocal colorcolumn=80",
 })
 
 vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {

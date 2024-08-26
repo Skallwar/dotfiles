@@ -22,6 +22,12 @@ local plugins = {
     },
   },
   {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = require "custom.configs.lspconfig",
+    },
+  },
+  {
     "nvim-treesitter/nvim-treesitter-context",
     event = { "BufReadPost", "BufWritePost", "BufNewFile" },
   },
