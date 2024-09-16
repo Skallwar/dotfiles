@@ -34,7 +34,7 @@
         "PhoneBackups" = {
           id = "sig36-5ap6f";
           path = "/data/syncthing/PhoneBackups";
-          devices = [ "redmi" "PCMASTERACE" ];
+          devices = [ "redmi" "PCMASTERACE" "burritosblues" ];
         };
       };
     };

@@ -15,12 +15,21 @@
           id = "YYEDLNB-QCQKAGT-WTNCK4R-VXPMJB7-OAATXYT-UPJ74FJ-JXH4PCD-NLCDEQO";
           introducer = true;
         };
+        "redmi" = { id = "BQ4RQPP-B7GVSPM-QUKRF55-PFWWLMV-FYFA7BF-RIQOESL-GL5ULRA-S3BPRA4"; };
+        "burritosblues" = { id = "FT4XMTE-CMU4LN2-WVFJCML-Q2PLCMP-YYRRJDJ-2QZR53M-JYD34SL-I55DLA7"; };
+        "PCMASTERACE" = { id = "XNISIE3-PXBKVLA-TSD47VH-FNHIOFN-XYRDRZJ-B7ST2EC-NAVQ4CT-D6YINAT"; };
+        "Macha-PC" = { id = "KEH534Q-26GUJVO-5IUPCM3-WV6R33K-BS6UQ7M-S4DZPRJ-TUKIRKX-CR24FQO"; };
       };
       
       folders = {
         "Admin" = {
           path = "/home/esteban/Esteban";
           devices = ["Nixpi"];
+        };
+        "PhoneBackups" = {
+          id = "sig36-5ap6f";
+          path = "/home/esteban/PhoneBackups";
+          devices = [ "Nixpi" ];
         };
       };
     };
