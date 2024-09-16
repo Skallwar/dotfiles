@@ -36,9 +36,7 @@ export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
-# Exports
-export PATH="${PATH}:$HOME/.cargo/bin:${HOME}/.local/bin:${HOME}/dotfiles/tools:${HOME}/BayLibre/adi/adi-tools"
-export EDITOR="nvim"
+. $HOME/.profile
 
 # GPG
 export GPG_TTY=$(tty)
