@@ -3,13 +3,14 @@
 {
   environment.pathsToLink = [ "/libexec" ];
 
+  services.libinput.enable = true;
+
   services.xserver = {
     enable = true;
 
-    layout = "us";
-    xkbVariant = "";
-    xkbOptions = "caps:escape";
-    libinput.enable = true;
+    xkb.layout = "us";
+    xkb.variant = "";
+    xkb.options = "caps:escape";
 
     desktopManager = {
       xterm.enable = false;
@@ -29,7 +30,6 @@
         };
       };
 
-      defaultSession = "none+i3";
     };
 
     windowManager.i3 = {
@@ -42,4 +42,6 @@
       ];
     };
   };
+
+  services.displayManager.defaultSession = "none+i3";
 }
