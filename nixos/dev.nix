@@ -34,6 +34,9 @@
     clinfo
     libva-utils
     vdpauinfo
+
+    # When nixos is just too painfull
+    distrobox
   ];
 
   programs.adb.enable = true;
