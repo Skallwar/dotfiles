@@ -19,6 +19,7 @@ export HISTFILE=~/.bash_eternal_history
 # PROMPT_COMMAND=prompt_cmd
 
 eval "$(starship init bash)"
+eval "$(direnv hook bash)"
 
 # export PS1="[\[$(tput sgr0)\]\[\033[38;5;3m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[38;5;2m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;4m\]\w\[$(tput sgr0)\]]\[$(tput sgr0)\]\$(__RET=\$?; if [ \$__RET != 0 ]; then echo [\e[31m\$__RET\e[0m]; fi)\[\033[38;5;1m\]\\$\[$(tput sgr0)\] "
 # PS1_BASE="[\[$(tput sgr0)\]\[\033[38;5;11m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[38;5;2m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;4m\]\w\[$(tput sgr0)\]]\[$(tput sgr0)\]"
