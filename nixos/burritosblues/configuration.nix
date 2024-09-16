@@ -165,7 +165,7 @@
     levels = [
       [0 0 80]
       ["level auto" 80 90]
-      ["level full-speed" 90 255]
+      ["level disengaged" 90 255]
     ];
   };
   services.throttled = {
@@ -238,6 +238,9 @@
       STOP_CHARGE_THRESH_BAT1 = 80;
     };
   };
+
+  # Disable suspend when closing lid with AC power
+  services.logind.lidSwitchExternalPower = "ignore";
   
   # Laptop battery  
   systemd.user.timers.suspend-on-low-battery = {
