@@ -36,5 +36,8 @@
     vdpauinfo
   ];
 
+  programs.adb.enable = true;
+  users.users.esteban.extraGroups = ["adbusers"];
+
   services.udev.packages = [ pkgs.openocd ];
 }
