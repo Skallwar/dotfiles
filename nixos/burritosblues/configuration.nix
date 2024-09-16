@@ -55,7 +55,7 @@
   # Bluetooth
   hardware.bluetooth = {
     enable = true;
-    powerOnBoot = false;
+    powerOnBoot = true;
   };
   services.blueman.enable = true;
   
@@ -83,10 +83,8 @@
   services.printing.drivers = with pkgs; [
     hplipWithPlugin
   ];
-  services.avahi.enable = true;
   # Important to resolve .local domains of printers, otherwise you get an error
   # like  "Impossible to connect to XXX.local: Name or service not known"
-  services.avahi.nssmdns = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
