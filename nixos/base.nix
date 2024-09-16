@@ -2,18 +2,22 @@
 
 {
   # Fwupd
-  services.fwupd.enable = false;
+  services.fwupd.enable = true;
   services.udisks2.enable = true; # Error on fwupdmgr update otherwise
 
   # Enable hostname resolution on local network
-  services.avahi.nssmdns = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+  };
 
   # Never authorized password ssh login
   services.openssh.settings.PasswordAuthentication = false;
 
+  # No need for root password if connected via ssh
+  security.pam.sshAgentAuth.enable = true;
+
   nix.settings.auto-optimise-store = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nixpkgs.config.permittedInsecurePackages = [
-    "nix-2.16.2"
-  ];
+  nix.settings.trusted-users = [ "root" "esteban" "pi" ];
 }
