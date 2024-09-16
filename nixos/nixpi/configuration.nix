@@ -91,18 +91,11 @@
      raspberrypi-eeprom
   ];
 
-  # List services that you want to enable:
-
-  # Fwupd
-  services.fwupd.enable = false;
-
-
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
     settings.PasswordAuthentication = false;
   };
-  security.pam.enableSSHAgentAuth = true;
 
   # Nix
   nix.settings.auto-optimise-store = true;
