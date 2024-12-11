@@ -49,7 +49,7 @@ alias zshrc="vim $(readlink ~/.zshrc)"
 alias bashrc="vim $(readlink ~/.bashrc)"
 alias vimrc="vim $(readlink ~/.vimrc)"
 eval "$(thefuck --alias)"
-alias ls="ls -h --color=auto"
+alias ls="ls -h --color=auto --group-directories-first"
 alias tree="tree -C"
 alias lock="~/.dotfiles/lock.sh"
 alias listpkg='yay -Qet'
