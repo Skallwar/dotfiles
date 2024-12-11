@@ -2,11 +2,11 @@
   description = "An example NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs_unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     deploy-rs.url = "github:serokell/deploy-rs";
-    sops-nix.url = github:Mic92/sops-nix;
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
   outputs = {
@@ -85,17 +85,17 @@
             ]; 
             nixpkgs.config.allowBroken = true;
           })
+          # For having access to nixpkgs_unstable
+          { _module.args = inputs; }
           nixos-hardware.nixosModules.raspberry-pi-4
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64-new-kernel.nix"
           sops-nix.nixosModules.sops
+          ./unstable.nix
           ./base.nix
           ./nixpi/configuration.nix
           ./home_assitant.nix
           ./vikunja.nix
           ./cli.nix
-          {
-            environment.noXlibs = false;
-          }
         ];
       };
     };
