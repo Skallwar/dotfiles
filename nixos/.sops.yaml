@@ -2,7 +2,7 @@ keys:
   - &admin_gpg_yubikey 185A32668351ABE95821FF4D589741A8B26DBD62
   - &admin_local_ssh age1ncy28p26j9ps9ek37anv2xwssy676tre2gycxuu4gh22d0kr4d9qk64pq4
   - &server_burritosblues age1ve3qx36tuwkk887ucq8uwms7emnmlqqnwmykk8jg07ru82fklvqqh0sv9y
-  - &server_nixpi age1sar70lh0583h6htqeylecau7dg788rqtk7rjg5dlet9h40p343tq89sefm
+  - &server_nixpi age1qgx49lyd7e9u6ckpuqdrvwm7xjkjlyq6dcre20yjdd5gy3qfeaaq0r7yt4
 creation_rules:
   - path_regex: /[^/]+\.yaml$
     key_groups:
