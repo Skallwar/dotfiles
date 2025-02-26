@@ -112,7 +112,7 @@
   users.users.esteban = {
     isNormalUser = true;
     description = "Esteban";
-    extraGroups = [ "networkmanager" "wheel" "audio" "sound" "dialout" "netboot" ];
+    extraGroups = [ "nix-users" "networkmanager" "wheel" "audio" "sound" "dialout" "netboot" ];
     packages = with pkgs; [];
   };
 
