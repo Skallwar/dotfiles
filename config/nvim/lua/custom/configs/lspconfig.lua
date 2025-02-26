@@ -4,7 +4,7 @@ local capabilities = configs.capabilities
 -- capabilities.offsetEncoding = "utf-8"
 
 local lspconfig = require "lspconfig"
-local servers = { "clangd", "rust_analyzer", "lua_ls", "nil_ls", "pylyzer", "ruff_lsp" }
+local servers = { "clangd", "rust_analyzer", "lua_ls", "nil_ls", "pylyzer", "ruff" }
 local mason_servers = { "clangd", "rust-analyzer", "lua-language-server", "nil", "pylyzer", "ruff-lsp" }
 local settings = {
   lua_ls = {
