@@ -55,36 +55,6 @@
       # Includes dependencies for a basic setup
       # https://www.home-assistant.io/integrations/default_config/
       default_config = {};
-
-      sensor = [
-        {
-          platform = "systemmonitor";
-          scan_interval = "5";
-          resources = [
-            { type = "last_boot"; }
-            { type = "processor_use"; }
-            { type = "processor_temperature"; }
-            { type = "memory_use_percent"; }
-            { type = "memory_use"; }
-            { type = "memory_free"; }
-            # { type = "swap_use_percent"; }
-            # { type = "swap_use"; }
-            # { type = "swap_free"; }
-            { type = "ipv4_address"; arg = "end0"; }
-            { type = "ipv6_address"; arg = "end0"; }
-            { type = "network_in"; arg = "end0"; }
-            { type = "network_out"; arg = "end0"; }
-            { type = "throughput_network_in"; arg = "end0"; }
-            { type = "throughput_network_out"; arg = "end0"; }
-            { type = "disk_use_percent"; arg = "/"; }
-            { type = "disk_use"; arg = "/"; }
-            { type = "disk_free"; arg = "/"; }
-            { type = "disk_use_percent"; arg = "/data"; }
-            { type = "disk_use"; arg = "/data"; }
-            { type = "disk_free"; arg = "/data"; }
-          ];
-        }
-      ];
     };
   };
 
