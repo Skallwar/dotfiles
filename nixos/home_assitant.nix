@@ -56,6 +56,7 @@
       # https://www.home-assistant.io/integrations/default_config/
       default_config = {};
     };
+    configDir = "/data/hass";
   };
 
   # virtualisation.oci-containers = {
