@@ -84,6 +84,7 @@
 
   services.zigbee2mqtt = {
     enable = true;
+    dataDir = "/data/zigbee2mqtt/data";
     settings = {
       homeassistant = config.services.home-assistant.enable;
       serial = {
@@ -93,7 +94,7 @@
       mqtt = {
         server = "mqtt://localhost:1883";
         user = "zigbee2mqtt";
-        password = "!secret.yaml";
+        password = "!secret.yaml password";
       };
       frontend = {
         port = 8842;
