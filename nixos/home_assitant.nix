@@ -18,6 +18,33 @@
       "roborock"
       # "google_maps"
       "cast"
+    customComponents = [
+      (  pkgs.buildHomeAssistantComponent rec {
+          owner = "hekmon";
+          domain = "rtetempo";
+          version = "v1.3.2";
+
+          src = pkgs.fetchFromGitHub {
+            inherit owner;
+            repo = "rtetempo";
+            rev = version;
+            hash = "sha256-MLZeX6WNUSgVEv8zapAkkBKY5R1l5ykCcWTleYF0H5o=";
+          };
+
+          propagatedBuildInputs = [ pkgs.python312Packages.requests-oauthlib ];
+
+          meta = with lib; {
+            description = "RTE Tempo";
+            homepage = "https://github.com/hekmon/rtetempo";
+            changelog = "https://github.com/hekmon/rtetempo/releases/tag/${version}";
+            maintainers = with maintainers; [ k900 ];
+            license = licenses.mit;
+          };
+      })
+    ];
+    customLovelaceModules = with pkgs.home-assistant-custom-lovelace-modules; [
+      mushroom
+      universal-remote-card
     ];
     extraPackages = python3Packages: with python3Packages; [
       gtts
