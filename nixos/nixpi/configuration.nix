@@ -44,7 +44,7 @@
   # };
 
   fileSystems."/data" = {
-    device = "/dev/disk/by-label/NEXTCLOUD";
+    device = "/dev/disk/by-label/DATA";
     fsType = "ext4";
   };
 
