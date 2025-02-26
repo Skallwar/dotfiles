@@ -18,6 +18,8 @@
       "roborock"
       # "google_maps"
       "cast"
+      "backup"
+    ];
     customComponents = [
       (  pkgs.buildHomeAssistantComponent rec {
           owner = "hekmon";
