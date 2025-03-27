@@ -3,7 +3,7 @@
 {
   networking.firewall = {
     allowedTCPPorts = [ 53 ];
-    allowedUDPPorts = [ 53 30566 ]; # Clients and peers can use the same port, see listenport
+    allowedUDPPorts = [ 53 30566 51820 ]; # Clients and peers can use the same port, see listenport
     checkReversePath = false;
   };
 
