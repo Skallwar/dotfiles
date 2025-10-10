@@ -7,7 +7,7 @@ local plugins = {
      end,
 
      dependencies = {
-       "jose-elias-alvarez/null-ls.nvim",
+       "nvimtools/none-ls.nvim",
        config = function()
        require "custom.configs.null-ls"
      end,
@@ -57,17 +57,6 @@ local plugins = {
   --     require "custom.configs.checkpatch"
   --   end,
   -- },
-
-  -- LLM stuff
-  {
-    "David-Kunz/gen.nvim",
-    cmd = "Gen",
-    opts = {
-      model = "codellama:7b",
-      display_mode = "split",
-    },
-  },
-
 }
 
 return plugins
