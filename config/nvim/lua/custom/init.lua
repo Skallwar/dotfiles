@@ -31,6 +31,11 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
+	pattern = {"rust"},
+	command = "setlocal expandtab ts=4 sw=4 sts=4",
+})
+
+vim.api.nvim_create_autocmd("FileType", {
 	pattern = "gitcommit",
 	command = "setlocal colorcolumn=80",
 })
