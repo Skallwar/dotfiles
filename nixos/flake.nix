@@ -121,10 +121,8 @@
       nixpi = {
         hostname = "192.168.1.251";
         sshUser = "pi";
-        interactiveSudo = true;
-        sshOpts = ["-t"];
-        autoRollback =  false;
-        magicRollback = false; # In order for sshOpts "-t" to work, see https://github.com/serokell/deploy-rs/issues/78#issuecomment-989069609
+        sshOpts = ["-A"];
+        # magicRollback = false; # In order for sshOpts "-t" to work, see https://github.com/serokell/deploy-rs/issues/78#issuecomment-989069609
         # remoteBuild = true;
         profiles.system = {
           user = "root";
