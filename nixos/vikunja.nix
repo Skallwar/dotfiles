@@ -7,12 +7,25 @@
   services.vikunja = {
     enable = true;
     # setupNginx = true;
-    # database.type = "postgres";
+    database = {
+      type = "postgres";
+      host = "/run/postgresql";
+    };
     frontendScheme = "http";
     frontendHostname = "localhost";
     settings = {
       service.enableregistration = false;
     };
+  };
+
+  services.postgresql = {
+    enable = true;
+    ensureDatabases = [ "vikunja" ];
+    ensureUsers = [{
+      name = "vikunja";
+      ensureDBOwnership = true;
+    }];
+    # dataDir = "/data/postgresql/${config.services.postgresql.package.psqlSchema}";
   };
 
   # environment.systemPackages = with pkgs; [
