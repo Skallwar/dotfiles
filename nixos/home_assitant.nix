@@ -3,6 +3,7 @@
 {
   services.home-assistant = {
     enable = true;
+    config.recorder.db_url = "postgresql://@/hass";
     extraComponents = [
       # Components required to complete the onboarding
       "system_log"
@@ -50,6 +51,7 @@
     ];
     extraPackages = python3Packages: with python3Packages; [
       gtts
+      psycopg2
     ];
     config = {
       # Includes dependencies for a basic setup
@@ -101,5 +103,14 @@
         host = "0.0.0.0";
       };
     };
+  };
+
+  services.postgresql = {
+    enable = true;
+    ensureDatabases = [ "hass" ];
+    ensureUsers = [{
+      name = "hass";
+      ensureDBOwnership = true;
+    }];
   };
 }
