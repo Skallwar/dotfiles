@@ -6,7 +6,7 @@
 
   services.vikunja = {
     enable = true;
-    setupNginx = true;
+    # setupNginx = true;
     # database.type = "postgres";
     frontendScheme = "http";
     frontendHostname = "localhost";
@@ -15,7 +15,7 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    vikunja-api
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   vikunja-api
+  # ];
 }

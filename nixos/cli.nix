@@ -3,7 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     # CLI
-    unstable.neovim helix htop killall tree man-pages ncdu tmux ripgrep fd
+    neovim helix htop killall tree man-pages ncdu tmux ripgrep fd
     bash starship
     nix-output-monitor
   ];

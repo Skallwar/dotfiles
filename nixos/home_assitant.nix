@@ -33,7 +33,7 @@
             hash = "sha256-MLZeX6WNUSgVEv8zapAkkBKY5R1l5ykCcWTleYF0H5o=";
           };
 
-          propagatedBuildInputs = [ pkgs.python312Packages.requests-oauthlib ];
+          propagatedBuildInputs = [ pkgs.python313Packages.requests-oauthlib ];
 
           meta = with lib; {
             description = "RTE Tempo";

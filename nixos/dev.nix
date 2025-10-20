@@ -21,7 +21,7 @@
     b4
 
     # Editor and LSP
-    ruff-lsp
+    ruff
     pylyzer
     luajitPackages.lua-lsp
     clang-tools
