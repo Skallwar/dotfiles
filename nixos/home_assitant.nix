@@ -22,27 +22,73 @@
       "backup"
     ];
     customComponents = [
-      (  pkgs.buildHomeAssistantComponent rec {
-          owner = "hekmon";
-          domain = "rtetempo";
-          version = "v1.3.2";
+      (pkgs.buildHomeAssistantComponent rec {
+        owner = "joeShuff";
+        domain = "vikunja";
+        version = "0.12";
 
-          src = pkgs.fetchFromGitHub {
-            inherit owner;
-            repo = "rtetempo";
-            rev = version;
-            hash = "sha256-MLZeX6WNUSgVEv8zapAkkBKY5R1l5ykCcWTleYF0H5o=";
-          };
+        src = pkgs.fetchFromGitHub {
+          inherit owner;
+          repo = "vikunja-homeassistant";
+          rev = version;
+          hash = "sha256-GLHSP6YRu7O5pKDhmQ3V18UJJD9oOwITY4eG/yhrowg=";
+        };
 
-          propagatedBuildInputs = [ pkgs.python313Packages.requests-oauthlib ];
+        propagatedBuildInputs = [
+          (pkgs.python313.pkgs.buildPythonPackage rec {
+            pname = "pyvikunja";
+            version = "0.22";
+            format = "pyproject";
 
-          meta = with lib; {
-            description = "RTE Tempo";
-            homepage = "https://github.com/hekmon/rtetempo";
-            changelog = "https://github.com/hekmon/rtetempo/releases/tag/${version}";
-            maintainers = with maintainers; [ k900 ];
-            license = licenses.mit;
-          };
+            src = pkgs.fetchPypi {
+              inherit pname version;
+              hash = "sha256-Yn7EBQkM0y+4bkoiqJLL8ov/DOvmbdTIrW1oLLBmWio=";
+            };
+
+            propagatedBuildInputs = with pkgs.python313Packages; [
+              setuptools
+              httpx
+            ];
+
+            meta = with lib; {
+              description = "A python library for interfacing with a Vikunja instance";
+              homepage = "https://github.com/joeShuff/pyvikunja";
+              changelog = "https://github.com/joeShuff/pyvikunja/releases/tag/${version}";
+              maintainers = with maintainers; [ joeShuff ];
+              license = licenses.gpl3;
+            };
+          })
+        ];
+
+        meta = with lib; {
+          description = "Vikunja Home Assistant Integration";
+          homepage = "https://github.com/joeShuff/vikunja-homeassistant";
+          changelog = "https://github.com/joeShuff/vikunja-homeassistant/releases/tag/${version}";
+          maintainers = with maintainers; [ joeShuff ];
+          license = licenses.gpl3;
+        };
+      })
+      (pkgs.buildHomeAssistantComponent rec {
+        owner = "hekmon";
+        domain = "rtetempo";
+        version = "v1.3.2";
+
+        src = pkgs.fetchFromGitHub {
+          inherit owner;
+          repo = "rtetempo";
+          rev = version;
+          hash = "sha256-MLZeX6WNUSgVEv8zapAkkBKY5R1l5ykCcWTleYF0H5o=";
+        };
+
+        propagatedBuildInputs = [ pkgs.python313Packages.requests-oauthlib ];
+
+        meta = with lib; {
+          description = "RTE Tempo";
+          homepage = "https://github.com/hekmon/rtetempo";
+          changelog = "https://github.com/hekmon/rtetempo/releases/tag/${version}";
+          maintainers = with maintainers; [ k900 ];
+          license = licenses.mit;
+        };
       })
     ];
     customLovelaceModules = with pkgs.home-assistant-custom-lovelace-modules; [
