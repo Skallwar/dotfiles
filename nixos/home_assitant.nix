@@ -113,4 +113,12 @@
       ensureDBOwnership = true;
     }];
   };
+
+  services.postgresqlBackup = {
+    enable = true;
+    location = "/data/postgresql/backup";
+    compression = "zstd";
+    compressionLevel = 19;
+    databases = [ "hass" ];
+  };
 }

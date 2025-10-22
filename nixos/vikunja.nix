@@ -28,6 +28,11 @@
     # dataDir = "/data/postgresql/${config.services.postgresql.package.psqlSchema}";
   };
 
+  services.postgresqlBackup = {
+    enable = true;
+    databases = [ "vikunja" ];
+  };
+
   # environment.systemPackages = with pkgs; [
   #   vikunja-api
   # ];
