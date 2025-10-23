@@ -9,6 +9,8 @@
   services.avahi = {
     enable = true;
     nssmdns4 = true;
+    openFirewall = true;
+    allowPointToPoint = true;
   };
 
   # Never authorized password ssh login
