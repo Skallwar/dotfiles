@@ -12,6 +12,7 @@
       (modulesPath + "/profiles/headless.nix")
 
       ./hardware-configuration.nix
+      ./wireguard_server.nix
       ./syncthing.nix
       ./sops.nix
     ];
