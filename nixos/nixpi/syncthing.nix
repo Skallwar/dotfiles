@@ -40,6 +40,20 @@
     };
   };
 
+  services.nginx = {
+    enable = true;
+    recommendedGzipSettings = true;
+    recommendedOptimisation = true;
+    virtualHosts."syncthing.skallwar.fr" = {
+      forceSSL = true;
+      enableACME = true;
+      locations."/" = {
+        proxyPass = "http://localhost:8384";
+        proxyWebsockets = true;
+      };
+    };
+  };
+
  # networking.firewall.allowedTCPPorts = [ 8384 22000];
  # networking.firewall.allowedUDPPorts = [ 22000 21027];
 }
