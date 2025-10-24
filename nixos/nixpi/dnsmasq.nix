@@ -32,7 +32,11 @@
       # Range is excluding Bbox IP
       dhcp-range = [ "192.168.1.1,192.168.1.253,24h" ];
       interface = "end0";
-      dhcp-host = "192.168.1.1";
+      dhcp-host = [
+        "192.168.1.1"
+        "c8:63:14:72:73:d6,192.168.1.250"
+        "dc:a6:32:25:ab:b8,192.168.1.251"
+      ];
       # Give the gateway address
       dhcp-option="option:router,192.168.1.254";
       dhcp-authoritative=true;
