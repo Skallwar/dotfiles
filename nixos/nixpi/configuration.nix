@@ -13,6 +13,7 @@
 
       ./hardware-configuration.nix
       ./dnsmasq.nix
+      ./fail2ban.nix
       ./wireguard_server.nix
       ./syncthing.nix
       ./sops.nix
