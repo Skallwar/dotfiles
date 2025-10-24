@@ -14,14 +14,13 @@
       address = "192.168.1.254";
       interface = "end0";
     };
-    nameservers = [ "192.168.1.251" ];
   };
 
   services.dnsmasq = {
     enable = true;
     settings = {
       # upstream DNS servers
-      server = [ "194.242.2.3" ];
+      server = [ "9.9.9.9" "149.112.112.112" ];
       # sensible behaviours
       domain-needed = true;
       bogus-priv = true;
