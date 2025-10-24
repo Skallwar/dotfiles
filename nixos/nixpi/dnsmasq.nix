@@ -52,4 +52,8 @@
     };
   };
 
+  networking.firewall.allowedUDPPorts = [
+    67 # DHCP
+  ];
+
 }

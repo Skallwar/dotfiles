@@ -34,7 +34,7 @@
 
   # Enable networking
   networking.hostName = "nixpi";
-  networking.firewall.enable = false;
+  networking.firewall.enable = true;
   # networking.networkmanager.enable = true;
 
   # system.activationScripts = {
