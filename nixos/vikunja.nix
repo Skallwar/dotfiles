@@ -1,9 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  services.nginx.enable = true;
-  # services.postgresql.enable = true;
-
   services.vikunja = {
     enable = true;
     # setupNginx = true;
@@ -18,6 +15,23 @@
     };
   };
 
+  security.acme.defaults.email = "estblcsk+acme@gmail.com";
+  security.acme.acceptTerms = true;
+
+  services.nginx = {
+    enable = true;
+    recommendedGzipSettings = true;
+    recommendedOptimisation = true;
+    virtualHosts."vikunja.skallwar.fr" = {
+      forceSSL = true;
+      enableACME = true;
+      locations."/" = {
+        proxyPass = "http://localhost:3456";
+        proxyWebsockets = true;
+      };
+    };
+  };
+
   services.postgresql = {
     enable = true;
     ensureDatabases = [ "vikunja" ];
@@ -25,15 +39,10 @@
       name = "vikunja";
       ensureDBOwnership = true;
     }];
-    # dataDir = "/data/postgresql/${config.services.postgresql.package.psqlSchema}";
   };
 
   services.postgresqlBackup = {
     enable = true;
     databases = [ "vikunja" ];
   };
-
-  # environment.systemPackages = with pkgs; [
-  #   vikunja-api
-  # ];
 }

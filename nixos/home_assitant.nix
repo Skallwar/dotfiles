@@ -167,4 +167,18 @@
     compressionLevel = 19;
     databases = [ "hass" ];
   };
+
+  services.nginx = {
+    enable = true;
+    recommendedGzipSettings = true;
+    recommendedOptimisation = true;
+    virtualHosts."hass.skallwar.fr" = {
+      forceSSL = true;
+      enableACME = true;
+      locations."/" = {
+        proxyPass = "http://localhost:8123";
+        proxyWebsockets = true;
+      };
+    };
+  };
 }
