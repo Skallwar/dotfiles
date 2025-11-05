@@ -57,6 +57,12 @@
 
   networking.firewall.allowedUDPPorts = [
     67 # DHCP
+    53 # DNS 
+  ];
+
+  # DNS can work with both UDP and TCP
+  networking.firewall.allowedTCPPorts = [
+    53 # DNS 
   ];
 
 }
