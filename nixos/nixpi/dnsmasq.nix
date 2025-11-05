@@ -31,7 +31,7 @@
 
       # Range is excluding Bbox IP
       dhcp-range = [ "192.168.1.1,192.168.1.253,24h" ];
-      interface = "end0";
+      interface = "end0,wg0";
       dhcp-host = [
         "192.168.1.1"
         "c8:63:14:72:73:d6,192.168.1.250"
