@@ -26,16 +26,9 @@
   boot.initrd.network.ssh.enable = true;
   systemd.watchdog.runtimeTime = "60s";
 
-  # PowerManagement
-  powerManagement = {
-    enable = true;
-    cpuFreqGovernor = "ondemand";
-  };
-
   # Enable networking
   networking.hostName = "nixpi";
   networking.firewall.enable = true;
-  # networking.networkmanager.enable = true;
 
   # system.activationScripts = {
   #   rfkillUnblockWlan = {
