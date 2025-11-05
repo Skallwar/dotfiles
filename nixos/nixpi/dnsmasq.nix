@@ -39,7 +39,7 @@
       ];
       # Give the gateway address
       dhcp-option="option:router,192.168.1.254";
-      dhcp-authoritative=true;
+      dhcp-authoritative=false; # BBox one still active even when disable, sending NAK
 
       # local domains
       local = "/lan/";
@@ -48,7 +48,10 @@
 
       # don't use /etc/hosts as this would advertise surfer as localhost
       no-hosts = true;
-      address = "/*.skallwar.fr/192.168.1.251";
+      address = [
+        "/*.skallwar.fr/192.168.1.251"
+        "/bbox/192.168.1.254"
+      ];
     };
   };
 
