@@ -32,6 +32,10 @@
     };
   };
 
+  networking.firewall.allowedTCPPorts = [
+    3456
+  ];
+
   services.postgresql = {
     enable = true;
     ensureDatabases = [ "vikunja" ];
