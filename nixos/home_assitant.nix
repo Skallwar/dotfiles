@@ -20,6 +20,7 @@
       # "google_maps"
       "cast"
       "backup"
+      "cpuspeed"
     ];
     customComponents = [
       (pkgs.buildHomeAssistantComponent rec {
@@ -190,4 +191,14 @@
       };
     };
   };
+
+  networking.firewall.allowedTCPPorts = [
+    80
+    81
+    443
+    8080
+    8123
+    8842
+    1883
+  ];
 }
