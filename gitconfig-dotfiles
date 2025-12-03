@@ -1,0 +1,9 @@
+[alias]
+  pushfwl = push --force-with-lease
+  logone = log --oneline --decorate --graph --abbrev-commit
+
+[format]
+	signoff = true
+
+[commit]
+	verbose = true
