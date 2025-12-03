@@ -22,7 +22,7 @@ return {
   	opts = {
       ensure_installed = {
         "c", "rust", "cpp", "lua", "python", "toml", "nix", "perl", "ruby",
-        "html", "css", "bash", "devicetree", "vim", "vimdoc"
+        "html", "css", "bash", "devicetree", "vim", "vimdoc", "bitbake"
       },
   	},
   },

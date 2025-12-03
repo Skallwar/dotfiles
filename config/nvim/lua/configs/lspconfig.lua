@@ -1,6 +1,6 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = { "clangd", "rust_analyzer", "lua_ls", "nil_ls", "pylyzer", "ruff" }
+local servers = { "clangd", "rust_analyzer", "lua_ls", "nil_ls", "pylyzer", "ruff", "bitbake-language-server" }
 local mason_servers = { "clangd", "rust-analyzer", "lua-language-server", "nil", "pylyzer", "ruff-lsp" }
 local settings = {
   lua_ls = {
