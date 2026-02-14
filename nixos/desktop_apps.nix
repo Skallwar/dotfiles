@@ -11,7 +11,7 @@
     peazip
 
     # Office
-    libreoffice onlyoffice-bin
+    libreoffice onlyoffice-desktopeditors
     hunspell hunspellDicts.en_US hunspellDicts.fr-any
   ];
 

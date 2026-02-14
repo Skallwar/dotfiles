@@ -13,7 +13,7 @@ in
   environment.variables.LD_LIBRARY_PATH = [ "${pkgs.freetype_subpixel}/lib" ];
 
   fonts.packages = with pkgs; [
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       noto-fonts
       font-awesome
       source-code-pro

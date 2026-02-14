@@ -16,7 +16,8 @@
     gh
     glab
     gitFull
-    thefuck
+    # thefuck
+    pay-respects
     aerc
     b4
 

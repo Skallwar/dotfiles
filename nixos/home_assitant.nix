@@ -135,7 +135,7 @@
     enable = true;
     dataDir = "/data/zigbee2mqtt/data";
     settings = {
-      homeassistant = config.services.home-assistant.enable;
+      homeassistant.enabled = config.services.home-assistant.enable;
       serial = {
         port = "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0";
         # disable_led = false;

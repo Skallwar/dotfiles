@@ -6,7 +6,7 @@
     user = "syncthing";
     dataDir = "/data/syncthing";    # Default folder for new synced folders
     configDir = "/data/.config/syncthing";   # Folder for Syncthing's settings and keys
-    # openDefaultPorts = true;
+    openDefaultPorts = true;
     guiAddress = "0.0.0.0:8384";
 
     settings = {
@@ -54,6 +54,6 @@
     };
   };
 
- # networking.firewall.allowedTCPPorts = [ 8384 22000];
- # networking.firewall.allowedUDPPorts = [ 22000 21027];
+ networking.firewall.allowedTCPPorts = [ 8384 22000];
+ networking.firewall.allowedUDPPorts = [ 22000 21027];
 }

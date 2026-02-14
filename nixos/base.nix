@@ -18,6 +18,7 @@
 
   # No need for root password if connected via ssh
   security.pam.sshAgentAuth.enable = true;
+  security.pam.services.sudo.rssh = true;
 
   nix.settings.auto-optimise-store = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

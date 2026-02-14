@@ -2,7 +2,7 @@
   description = "An example NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs_unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     deploy-rs.url = "github:serokell/deploy-rs";
@@ -82,18 +82,25 @@
                 meta.platforms = [];
                 });
               })
-              (final:  prev : {
-                pam_ssh_agent_auth = prev.pam_ssh_agent_auth.overrideAttrs (old: {
-                  fixupPhase = ''
-                    patchelf --add-needed ${prev.libgcc}/lib/libgcc_s.so.1 $out/libexec/pam_ssh_agent_auth.so
-                  '';
-                });
-              })
+              # (final:  prev : {
+              #   pam_ssh_agent_auth = prev.pam_ssh_agent_auth.overrideAttrs (old: {
+              #     fixupPhase = ''
+              #       patchelf --add-needed ${prev.libgcc}/lib/libgcc_s.so.1 $out/libexec/pam_ssh_agent_auth.so
+              #     '';
+              #   });
+              # })
             ]; 
             nixpkgs.config.allowBroken = true;
           })
           # For having access to nixpkgs_unstable
           { _module.args = inputs; }
+	  # Fix for https://github.com/NixOS/nixpkgs/pull/472707
+	  { disabledModules = ["services/networking/syncthing.nix"];
+	    imports = let
+	      syncthing-backport = (fetchTarball {url = "https://github.com/nixos/nixpkgs/archive/1460b407c455b19ee24151350574630e14ec5582.tar.gz"; sha256 = "0vvz0il4c87vxlc2rkz229ji0ziw52b8m2amhql0j24ddk6ly1wc";});
+	    in
+	    ["${syncthing-backport}/nixos/modules/services/networking/syncthing.nix"];
+	  }
           nixos-hardware.nixosModules.raspberry-pi-4
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64-new-kernel.nix"
           sops-nix.nixosModules.sops
@@ -121,7 +128,9 @@
       nixpi = {
         hostname = "192.168.1.251";
         sshUser = "pi";
-        sshOpts = ["-A"];
+        # sshOpts = ["-A"];
+        sshOpts = ["-t"];
+	interactiveSudo = true;
         # magicRollback = false; # In order for sshOpts "-t" to work, see https://github.com/serokell/deploy-rs/issues/78#issuecomment-989069609
         # remoteBuild = true;
         profiles.system = {
