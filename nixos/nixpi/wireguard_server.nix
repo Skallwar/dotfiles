@@ -29,6 +29,7 @@
           # For this to work you have to set the dnsserver IP of your router (or dnsserver of choice) in your clients
           postSetup = ''
             ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 192.168.27.0/24 -o end0 -j MASQUERADE
+            ${pkgs.iptables}/bin/iptables -I FORWARD -i wg0 -o end0 -s 192.168.27.4 -d 192.168.1.0/24 -j DROP
             ${pkgs.iproute2}/bin/ip link set dev wg0 multicast on
           '';
 
@@ -57,6 +58,11 @@
               # Redmi Note 10 T
               publicKey = "MK8S6a0BpWsAY/8SZzLW1sikluJyMNVJcCj+PP9I4EY=";
               allowedIPs = [ "192.168.27.3/32" "224.0.0.251/32" ];
+            }
+	    {
+              # Papa
+              publicKey = "DPMdBAH9b2sbP07iE3NpbgaTdIaoVQbpxQEMjVmcLSc=";
+              allowedIPs = [ "192.168.27.4/32" "224.0.0.251/32" ];
             }
           ];
         };
