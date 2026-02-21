@@ -138,6 +138,7 @@
       homeassistant.enabled = config.services.home-assistant.enable;
       serial = {
         port = "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0";
+	adapter = "zstack";
         # disable_led = false;
       };
       mqtt = {
@@ -147,7 +148,7 @@
       };
       frontend = {
         port = 8842;
-        host = "0.0.0.0";
+        # host = "0.0.0.0";
       };
     };
   };
