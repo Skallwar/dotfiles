@@ -82,13 +82,14 @@
                 meta.platforms = [];
                 });
               })
-              # (final:  prev : {
-              #   pam_ssh_agent_auth = prev.pam_ssh_agent_auth.overrideAttrs (old: {
-              #     fixupPhase = ''
-              #       patchelf --add-needed ${prev.libgcc}/lib/libgcc_s.so.1 $out/libexec/pam_ssh_agent_auth.so
-              #     '';
-              #   });
-              # })
+	      # Temporary fix for issue https://github.com/NixOS/nixpkgs/issues/386392.
+              (final:  prev : {
+                pam_ssh_agent_auth = prev.pam_ssh_agent_auth.overrideAttrs (old: {
+                  fixupPhase = ''
+                    patchelf --add-needed ${prev.libgcc}/lib/libgcc_s.so.1 $out/libexec/pam_ssh_agent_auth.so
+                  '';
+                });
+              })
             ]; 
             nixpkgs.config.allowBroken = true;
           })
@@ -128,9 +129,9 @@
       nixpi = {
         hostname = "192.168.1.251";
         sshUser = "pi";
-        # sshOpts = ["-A"];
-        sshOpts = ["-t"];
-	interactiveSudo = true;
+        sshOpts = ["-A"];
+        # sshOpts = ["-t"];
+	interactiveSudo = false;
         # magicRollback = false; # In order for sshOpts "-t" to work, see https://github.com/serokell/deploy-rs/issues/78#issuecomment-989069609
         # remoteBuild = true;
         profiles.system = {

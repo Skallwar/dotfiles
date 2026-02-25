@@ -28,7 +28,7 @@
 
   # Enable networking
   networking.hostName = "nixpi";
-  networking.firewall.enable = true;
+  networking.firewall.enable = false;
 
   # system.activationScripts = {
   #   rfkillUnblockWlan = {
