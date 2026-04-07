@@ -29,11 +29,9 @@
           # For this to work you have to set the dnsserver IP of your router (or dnsserver of choice) in your clients
           postSetup = ''
             ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 192.168.27.0/24 -o end0 -j MASQUERADE
-            ${pkgs.iptables}/bin/iptables -A FORWARD -s 192.168.27.3 -d 192.168.1.0/24 -j DROP
             ${pkgs.iptables}/bin/iptables -A FORWARD -s 192.168.27.4 -d 192.168.1.0/24 -j DROP
             ${pkgs.iptables}/bin/iptables -A FORWARD -s 192.168.27.5 -d 192.168.1.0/24 -j DROP
             ${pkgs.iptables}/bin/iptables -A FORWARD -s 192.168.27.6 -d 192.168.1.0/24 -j DROP
-            ${pkgs.iptables}/bin/iptables -I INPUT 1 -s 192.168.27.3 -j DROP
             ${pkgs.iptables}/bin/iptables -I INPUT 1 -s 192.168.27.4 -j DROP
             ${pkgs.iptables}/bin/iptables -I INPUT 1 -s 192.168.27.5 -j DROP
             ${pkgs.iptables}/bin/iptables -I INPUT 1 -s 192.168.27.6 -j DROP
@@ -42,11 +40,9 @@
 
           # This undoes the above command
           postShutdown = ''
-            ${pkgs.iptables}/bin/iptables -D FORWARD -s 192.168.27.3 -d 192.168.1.0/24 -j DROP
             ${pkgs.iptables}/bin/iptables -D FORWARD -s 192.168.27.4 -d 192.168.1.0/24 -j DROP
             ${pkgs.iptables}/bin/iptables -D FORWARD -s 192.168.27.5 -d 192.168.1.0/24 -j DROP
             ${pkgs.iptables}/bin/iptables -D FORWARD -s 192.168.27.6 -d 192.168.1.0/24 -j DROP
-            ${pkgs.iptables}/bin/iptables -D INPUT -s 192.168.27.3 -j DROP
             ${pkgs.iptables}/bin/iptables -D INPUT -s 192.168.27.4 -j DROP
             ${pkgs.iptables}/bin/iptables -D INPUT -s 192.168.27.5 -j DROP
             ${pkgs.iptables}/bin/iptables -D INPUT -s 192.168.27.6 -j DROP
