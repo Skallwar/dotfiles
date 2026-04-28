@@ -1,6 +1,6 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = { "clangd", "rust_analyzer", "lua_ls", "nil_ls", "pylyzer", "ruff", "bitbake-language-server" }
+local servers = { "clangd", "rust_analyzer", "lua_ls", "nil_ls", "pylyzer", "ruff" }
 local mason_servers = { "clangd", "rust-analyzer", "lua-language-server", "nil", "pylyzer", "ruff-lsp" }
 local settings = {
   lua_ls = {
@@ -20,12 +20,17 @@ local cmds = {
 }
 
 for _, server in ipairs(servers) do
-  vim.lsp.config(server, {
+  local config = {
     on_attach = on_attach,
     capabilities = capabilities,
-    settings = settings[serve],
-    cmd = cmds[server],
-  })
+    settings = settings[server],
+  }
+
+  if cmds[server] then
+    config.cmd = cmds[server]
+  end
+
+  vim.lsp.config(server, config)
 
   vim.lsp.enable(server)
 end
