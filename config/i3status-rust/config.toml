@@ -1,8 +1,10 @@
+icons_format = "{icon}"
+
 [theme]
 theme = "slick"
 
 [icons]
-icons = "awesome6"
+icons = "awesome4"
 
 [[block]]
 block = "battery"

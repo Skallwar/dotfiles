@@ -178,7 +178,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
     mode hide
-    status_command i3status-rs ~/.config/i3/status.toml
+    status_command i3status-rs
     font pango:Source Code Pro, FontAwesome 9
     # position top
     colors {
