@@ -14,10 +14,6 @@
 
     desktopManager = {
       xterm.enable = false;
-      gnome.extraGSettingsOverrides = ''
-      	[org.gnome.desktop.interface]
-      	gtk-theme='Yaru'
-      '';
       runXdgAutostartIfNone = true;
     };
 
@@ -44,4 +40,8 @@
   };
 
   services.displayManager.defaultSession = "none+i3";
+  services.desktopManager.gnome.extraGSettingsOverrides = ''
+      	[org.gnome.desktop.interface]
+      	gtk-theme='Yaru'
+      '';
 }

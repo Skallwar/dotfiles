@@ -24,7 +24,7 @@
   boot.supportedFilesystems = [ "ntfs" ];
   # Enable ssh recovery
   boot.initrd.network.ssh.enable = true;
-  systemd.watchdog.runtimeTime = "60s";
+  systemd.settings.Manager.RuntimeWatchdogSec = "60s";
 
   # Enable networking
   networking.hostName = "nixpi";

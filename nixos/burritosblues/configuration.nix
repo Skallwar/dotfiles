@@ -240,7 +240,7 @@
   };
 
   # Disable suspend when closing lid with AC power
-  services.logind.lidSwitchExternalPower = "ignore";
+  services.logind.settings.Login.lidSwitchExternalPower = "ignore";
   
   # Laptop battery  
   systemd.user.timers.suspend-on-low-battery = {
