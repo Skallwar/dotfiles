@@ -113,9 +113,32 @@
           ./cli.nix
         ];
       };
+      rock5b = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        specialArgs.flake-inputs = inputs;
+        modules = [
+          ({ config, pkgs, ...}: {
+            nixpkgs.overlays = [ 
+              (final: super: {
+                zfs = super.zfs.overrideAttrs(_: {
+                meta.platforms = [];
+                });
+              })
+            ]; 
+            nixpkgs.config.allowBroken = true;
+          })
+          # For having access to nixpkgs_unstable
+          { _module.args = inputs; }
+          sops-nix.nixosModules.sops
+          ./unstable.nix
+          ./base.nix
+          ./rock5b/configuration.nix
+        ];
+      };
     };
 
     images.nixpi = nixosConfigurations.nixpi.config.system.build.sdImage;
+    images.rock5b = nixosConfigurations.rock5b.config.system.build.sdImage;
 
     deploy.nodes = {
       burritosblues = {
