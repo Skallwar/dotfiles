@@ -14,6 +14,13 @@ local settings = {
       },
     },
   },
+  rust_analyzer = {
+    ["rust-analyzer"] = {
+      check = {
+        command = "clippy",
+      },
+    },
+  },
 }
 local cmds = {
   clangd = { "clangd", "--clang-tidy", "--offset-encoding=utf-16" },
