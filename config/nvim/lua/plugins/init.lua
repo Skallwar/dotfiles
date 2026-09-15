@@ -38,6 +38,12 @@ return {
   },
 
   {
+    "axelf4/vim-strip-trailing-whitespace",
+    lazy = false,
+    cmd = { "StripTrailingWhitespace" },
+  },
+
+  {
     "mfussenegger/nvim-dap",
     event = "VeryLazy",
     dependencies = {
