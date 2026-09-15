@@ -62,7 +62,9 @@ exec nm-applet
 exec blueman-applet
 
 ### Display profiles
-exec acpi_listen | grep 'button/lid LID' > /tmp/acpi_listen.log & /home/estbla01/.cargo/bin/shikane > /tmp/shikane.${XDG_VTNR}.${USER}.log 2>&1
+# exec acpi_listen | grep 'button/lid LID' > /tmp/acpi_listen.log & /home/estbla01/.cargo/bin/shikane > /tmp/shikane.${XDG_VTNR}.${USER}.log 2>&1
+exec /home/estbla01/.cargo/bin/shikane > /tmp/shikane.${XDG_VTNR}.${USER}.log 2>&1
+exec acpi_listen | grep -e 'button/lid LID' -e 'jack/videoout VIDEOOUT' --line-buffered | while read -r line; do shikanectl reload || true && echo toto; done
 
 ### Input configuration
 #

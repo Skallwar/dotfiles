@@ -1,0 +1,75 @@
+[[profile]]
+name = "Office open"
+condition = "grep 'open' /proc/acpi/button/lid/LID/state"
+  [[profile.output]]
+  enable = true
+  search = ["m=P34WD-40", "s=V30F9X5D", "v=Lenovo Group Limited"]
+  mode = "3440x1440@59.973Hz"
+  position = "1920,0"
+  scale = 1.0
+  transform = "normal"
+  adaptive_sync = false
+
+  [[profile.output]]
+  enable = true
+  search = ["m=0x0C26", "s=", "v=BOE"]
+
+[[profile]]
+name = "Office closed"
+condition = "grep 'closed' /proc/acpi/button/lid/LID/state"
+  [[profile.output]]
+  enable = true
+  search = ["m=P34WD-40", "s=V30F9X5D", "v=Lenovo Group Limited"]
+  mode = "3440x1440@59.973Hz"
+  position = "0,0"
+  scale = 1.0
+  transform = "normal"
+  adaptive_sync = false
+
+  [[profile.output]]
+  enable = false
+  search = ["m=0x0C26", "s=", "v=BOE"]
+
+[[profile]]
+name = "OnTheGo"
+  [[profile.output]]
+  enable = true
+  search = ["m=0x0C26", "s=", "v=BOE"]
+  mode = "1920x1200@60.002Hz"
+  position = "0,0"
+  scale = 1.0
+  transform = "normal"
+  adaptive_sync = false
+
+[[profile]]
+name = "Homedock open"
+condition = "grep 'open' /proc/acpi/button/lid/LID/state"
+  [[profile.output]]
+  enable = true
+  search = ["m=M27Q", "s=21080B010707", "v=GIGA-BYTE TECHNOLOGY CO., LTD."]
+  mode = "2560x1440@59.951Hz"
+  position = "1920,0"
+  scale = 1.0
+  transform = "normal"
+  adaptive_sync = false
+
+  [[profile.output]]
+  enable = true
+  search = ["m=0x0C26", "s=", "v=BOE"]
+
+[[profile]]
+name = "Homedock closed"
+condition = "grep 'closed' /proc/acpi/button/lid/LID/state"
+  [[profile.output]]
+  enable = true
+  search = ["m=M27Q", "s=21080B010707", "v=GIGA-BYTE TECHNOLOGY CO., LTD."]
+  mode = "2560x1440@59.951Hz"
+  position = "0,0"
+  scale = 1.0
+  transform = "normal"
+  adaptive_sync = false
+
+  [[profile.output]]
+  enable = false
+  search = ["m=0x0C26", "s=", "v=BOE"]
+
