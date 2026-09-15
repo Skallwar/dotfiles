@@ -11,6 +11,10 @@ return {
     },
   },
 
+  git = {
+    timeout = 240, -- 4 minutes
+  },
+
   performance = {
     rtp = {
       disabled_plugins = {
