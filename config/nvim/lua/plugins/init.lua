@@ -19,12 +19,14 @@ return {
   {
   	"nvim-treesitter/nvim-treesitter",
     -- event = { "BufReadPost", "BufWritePost", "BufNewFile" },
-  	opts = {
-      ensure_installed = {
+    lazy = false,
+    build = ':TSUpdate',
+    config = function()
+      require("nvim-treesitter").install({
         "c", "rust", "cpp", "lua", "python", "toml", "nix", "perl", "ruby",
-        "html", "css", "bash", "devicetree", "vim", "vimdoc", "bitbake"
-      },
-  	},
+        "html", "css", "bash", "devicetree", "vim", "vimdoc", "bitbake", "markdown"
+      })
+    end,
   },
 
   {
