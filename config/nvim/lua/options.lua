@@ -11,6 +11,12 @@ local function set_language_config()
     if filetype == "gitcommit" then
         vim.wo.colorcolumn = '72'
     end
+
+    if filetype == "rust" then
+        vim.o.tabstop = 4
+        vim.o.shiftwidth = 4
+        vim.o.expandtab = true
+    end
 end
 
 vim.api.nvim_create_autocmd({"FileType"}, {
